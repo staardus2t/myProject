@@ -18,5 +18,13 @@ class UsersTableSeeder extends Seeder
             'role' => 1,
             'statut' => 1
         ]);
+
+        DB::table('users')->insert([
+            'name' => 'Med LAKRITA',
+            'email' => 'med.lakrita@gmail.com',
+            'password' => bcrypt('123456789'),
+            'role' => 1,
+            'statut' => 1
+        ]);
     }
 }
