@@ -63,6 +63,7 @@
             <!--begin: Datatable -->
             <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items">
                 <thead>
+                    <th>Image</th>
                     <th>Titre</th>
                     <th>Catégorie</th>
                     <th>Date</th>
@@ -79,6 +80,9 @@
                 <tbody>
                     @foreach ($articles as $article)
                     <tr>
+                        <td>
+                            <img src="{{ asset('storage/uploads/images/'.$article->image) }}" alt="" style="width:100px">
+                        </td>
                         <td>
                             {{ $article->titre }}
                         </td>

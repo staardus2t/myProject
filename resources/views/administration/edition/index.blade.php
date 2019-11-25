@@ -61,8 +61,9 @@
         <div class="m-portlet__body">
 
             <!--begin: Datatable -->
-            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items">
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items" >
                 <thead>
+                    <th>Image</th>
                     <th>Titre</th>
                     <th>Auteur</th>
                     <th>Date publication</th>
@@ -78,6 +79,9 @@
                 <tbody>
                     @foreach ($editions as $edition)
                     <tr>
+                        <td>
+                            <img src="{{ asset('storage/uploads/images/'.$edition->image) }}" alt="" style="width:100px">
+                        </td>
                         <td>
                             {{ $edition->titre }}
                         </td>
