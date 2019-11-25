@@ -42,9 +42,9 @@
                                     <div class="row mt-3">
                                         <div class="col-lg-2 col-sm-12 ml-auto">
                                             <ul class="blog__list ">
-                                            <li class="blog__dot-active ">{{ $article->auteur }}</li>
+                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
                                                 <li>
-                                                    <a href="#">تعليقات {{$article->commentaire->count()}}</a>
+                                                    <a href="#comments">تعليقات {{$article->commentaire->count()}}</a>
                                                 </li>
                                             </ul>
                                         </div>
@@ -69,9 +69,9 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <div class="single-comment text-right">
+                                <div id="comments" class="single-comment text-right">
 
-                                    <div class="comment__boxed">
+                                    <div  class="comment__boxed">
                                         <h3 class="single__comment-title">التعليقات</h3>
                                         <ul class="comments-list">
                                             <li>

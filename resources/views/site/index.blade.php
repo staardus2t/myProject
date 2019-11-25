@@ -196,7 +196,7 @@
 
                             <div class="blog-inner-content">
                                 <h3 class="blog__title text-right">
-                                    <a href="single-news.html">
+                                    <a href="{{ route('site.article_show',$article->slug) }}">
                                         {{ $article->titre }}
                                     </a>
                                 </h3>
