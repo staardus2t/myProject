@@ -165,7 +165,7 @@
     </div>
     
     <div class="row" style="margin-top:20px">
-        <div class="col-lg-12">
+        <div class="col-lg-5">
 
             <!--begin::Portlet-->
             <div class="m-portlet">
@@ -182,7 +182,7 @@
 
                     <!--begin::Section-->
                     <div class="m-section m-section--last">
-                        <div class="m-section__content">
+                        <div class="m-section__content text-center">
 
                             <!--begin::Preview-->
                                 @if($article->image != NULL)
@@ -204,45 +204,10 @@
                     <!--end::Section-->
                 </div>
             </div>
+        </div>
+        <div class="col-lg-4">
 
-            <div class="m-portlet">
-                <div class="m-portlet__head">
-                    <div class="m-portlet__head-caption">
-                        <div class="m-portlet__head-title">
-                            <h3 class="m-portlet__head-text">
-                                Fichier
-                            </h3>
-                        </div>
-                    </div>
-                </div>
-                <div class="m-portlet__body">
-
-                    <!--begin::Section-->
-                    <div class="m-section m-section--last">
-                        <div class="m-section__content">
-
-                            <!--begin::Preview-->
-                                @if($article->fichier != NULL)
-                                <div class="m-demo__preview">
-                                    <a href="{{asset('storage/uploads/fichiers_article/'.$article->fichier)}}"
-                                        target="_blank"
-                                        class="btn btn-warning m-btn m-btn--custom  m-btn--icon m-btn--air">
-                                </div>
-                                <div class="btn-group">
-                                    <a href="{{ route('article.supprimer_fichier', $article->slug)}}" 
-                                        class="btn btn-danger" onclick="return confirm('Confirmer cette action ?');">Supprimer
-                                    </a>
-                                </div>
-                                @else
-                                Aucun fichier
-                                @endif
-                        </div>
-                    </div>
-
-                    <!--end::Section-->
-                </div>
-            </div>
-
+            @if(Auth::user()->role == 'Administrateur')
             <div class="m-portlet">
                     <div class="m-portlet__head">
                         <div class="m-portlet__head-caption">
@@ -267,8 +232,8 @@
                                         @csrf
                                         <div class="m-form__section m-form__section--first">
                                             <div class="form-group m-form__group row">
-                                                <label class="col-xl-2 col-lg-2 col-form-label">* Ordre :</label>
-                                                <div class="col-xl-4 col-lg-4">
+                                                <label class="col-xl-4 col-lg-4 col-form-label">* Ordre :</label>
+                                                <div class="col-xl-8 col-lg-8">
                                                     <input class="form-control m-input" type="text" name="ordre">
                                                 </div>
                                             </div>
@@ -310,6 +275,47 @@
                         <!--end::Section-->
                     </div>
                 </div>
+                @endif
+        </div>
+        <div class="col-lg-3">
+
+                @if($article->fichier != NULL)
+            <div class="m-portlet">
+                <div class="m-portlet__head">
+                    <div class="m-portlet__head-caption">
+                        <div class="m-portlet__head-title">
+                            <h3 class="m-portlet__head-text">
+                                Fichier
+                            </h3>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-portlet__body">
+
+                    <!--begin::Section-->
+                    <div class="m-section m-section--last">
+                        <div class="m-section__content">
+
+                            <!--begin::Preview-->
+                               
+                                <div class="btn-group">
+                                    <a title="Télécharger" href="{{asset('storage/uploads/fichiers_article/'.$article->fichier)}}"
+                                        class="btn btn-warning m-btn m-btn--custom  m-btn--icon m-btn--air">
+                                    <i class="la la-download"></i>
+                                    </a>
+                                </div>
+                                <div class="btn-group">
+                                    <a href="{{ route('article.supprimer_fichier', $article->slug)}}" 
+                                        class="btn btn-danger" onclick="return confirm('Confirmer cette action ?');">Supprimer
+                                    </a>
+                                </div>
+                        </div>
+                    </div>
+
+                    <!--end::Section-->
+                </div>
+            </div>
+            @endif
 
             <!--end::Portlet-->
         </div>

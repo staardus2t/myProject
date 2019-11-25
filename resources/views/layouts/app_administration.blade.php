@@ -437,6 +437,19 @@
 								</span></span>
 							</a>
 						</li>
+
+						{{-- //////////////// Gestion articles /////////////////// --}}
+						@php
+						$user = Auth::user();
+
+						$droit_acces_article = $user->select('categorie_droit_acces.*','categories.*','categorie_droit_acces.created_at as date_creation','categorie_droit_acces.updated_at as date_modification')
+						->join('categorie_droit_acces', 'categorie_droit_acces.user_id', '=', 'users.id')
+						->join('categories', 'categories.id', '=', 'categorie_droit_acces.categorie_id')
+						->where('categorie_droit_acces.user_id',$user->id)
+						->get();
+						@endphp
+
+						@if(Auth::user()->role == 'Administrateur' || $droit_acces_article->count() > 0)
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Cartegories et articles</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>
@@ -463,6 +476,7 @@
 								</ul>
 							</div>
 						</li>
+						@endif
 
 						{{-- Categorie --}}
 						@if(Auth::user()->role == 'Administrateur')
@@ -594,6 +608,18 @@
 							</div>
 
 						</li>
+						
+						{{-- ///////////////// Evénements ////////////////////// --}}
+						@php 
+						$user = Auth::user();
+
+						$droit_acces_evenement = $user->select('categorie_evenement_droit_acces.*','categorie_evenements.*','categorie_evenement_droit_acces.created_at as date_creation','categorie_evenement_droit_acces.updated_at as date_modification')
+						->join('categorie_evenement_droit_acces', 'categorie_evenement_droit_acces.user_id', '=', 'users.id')
+						->join('categorie_evenements', 'categorie_evenements.id', '=', 'categorie_evenement_droit_acces.categorie_id')
+						->get();
+						@endphp
+
+						@if(Auth::user()->role == 'Administrateur' || $droit_acces_evenement->count() > 0)
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Evenements</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>
@@ -627,6 +653,7 @@
 								</ul>
 							</div>
 						</li>
+						@endif
 
 						{{-- Categorie --}}
 						@if(Auth::user()->role == 'Administrateur')
@@ -666,7 +693,7 @@
 						<li id="utilisateur" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 							<a href="javascript:;" class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-icon flaticon-user-ok"></i>
-								<span class="m-menu__link-text  menuu">Gestion des Utilisateurs</span>
+								<span class="m-menu__link-text  menuu">Utilisateurs</span>
 								<i class="m-menu__ver-arrow la la-angle-right"></i>
 							</a>
 							<div class="m-menu__submenu "> 

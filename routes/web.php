@@ -38,7 +38,8 @@ Route::prefix('administration')->group(function () {
 
     //Droit d'accès catégories
     Route::get('/droit_acces/{user}', 'administration\Droit_accesController@index')->name('categorie_droit_acces.index');
-    Route::get('/droit_acces/create/{user}', 'administration\Droit_accesController@create')->name('categorie_droit_acces.create');
+    Route::get('/droit_acces/article/create/{user}', 'administration\Droit_accesController@article_create')->name('categorie_droit_acces.article_create');
+    Route::get('/droit_acces/evenement/create/{user}', 'administration\Droit_accesController@evenement_create')->name('categorie_droit_acces.evenement_create');
     Route::get('/droit_acces/{user}/edit/{categorie}', 'administration\Droit_accesController@edit')->name('categorie_droit_acces.edit');
     Route::put('/droit_acces/article/{user}', 'administration\Droit_accesController@article_store')->name('article_droit_acces.store');
     Route::put('/droit_acces/evenement/{user}', 'administration\Droit_accesController@evenement_store')->name('evenement_droit_acces.store');

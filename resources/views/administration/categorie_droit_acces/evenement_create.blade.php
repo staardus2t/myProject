@@ -12,20 +12,20 @@
                 </li>
                 <li class="m-nav__separator">-</li>
                 <li class="m-nav__item">
-                    <a href="" class="m-nav__link">
+                    <a href="{{ route('dashboard.home') }}" class="m-nav__link">
                         <span class="m-nav__link-text">Tableau de bord</span>
                     </a>
                 </li>
                 <li class="m-nav__separator">-</li>
                 <li class="m-nav__item">
-                    <a href="" class="m-nav__link">
-                        <span class="m-nav__link-text">Image</span>
+                <a href="{{route('categorie_droit_acces.index',$user->id)}}" class="m-nav__link">
+                        <span class="m-nav__link-text">Droit d'accès</span>
                     </a>
                 </li>
                 <li class="m-nav__separator">-</li>
                 <li class="m-nav__item">
                     <a href="" class="m-nav__link">
-                        <span class="m-nav__link-text">Ajouter image</span>
+                        <span class="m-nav__link-text">Ajouter droit daccès</span>
                     </a>
                 </li>
             </ul>
@@ -36,11 +36,13 @@
 <!-- END: Subheader -->
 <div class="m-content">
     @include('shared.errors_succes')
+    {{-- /////////////evenemets /////////////// --}}
     <div class="row">
         <div class="col-lg-12">
             <form class="m-form m-form--label-align-left- m-form--state-" id="m_form"
-            action="{{route('image.store')}}" method="POST" enctype="multipart/form-data">
+            action="{{route('evenement_droit_acces.store',$user->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <!--begin::Portlet-->
             <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
                     <div class="m-portlet__head">
@@ -52,7 +54,7 @@
                             <div class="m-portlet__head-caption">
                                 <div class="m-portlet__head-title">
                                     <h3 class="m-portlet__head-text">
-                                        Nouvelle Image
+                                        Nouveau Droit d'accès sur catégorie d'événements
                                     </h3>
                                 </div>
                             </div>
@@ -66,6 +68,15 @@
                                         </span>
                                     </button>
                                 </div>
+                                <div class="btn-group">
+                                <a href="{{ route('categorie_droit_acces.index',$user->id) }}"
+                                        class="btn btn-danger m-btn m-btn--icon m-btn--wide m-btn--md ml-5">
+                                        <span>
+                                            <i class="la la-close"></i>
+                                            <span>Annuler</span>
+                                        </span>
+                                    </a>
+                                </div>
                             </div>
                         </div>
                     </div>
@@ -74,20 +85,16 @@
                         <div class="m-portlet__body">
                             <div class="row">
                                 <div class="col-xl-12">
-                                    <div class="m-form__section">
+                                    <div class="m-form__section m-form__section--first">
                                         <div class="form-group m-form__group row">
-                                            <label class="col-xl-2 col-lg-2 col-form-label">* Nom :</label>
+                                            <label class="col-xl-2 col-lg-2 col-form-label">*  Catégorie évenement :</label>
                                             <div class="col-xl-10 col-lg-10">
-                                                <input class="form-control m-input" type="text" name="nom" dir="rtl"
-                                                    value="{{ old('nom') }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group">
-                                            <label for="exampleInputEmail1">* Image :</label>
-                                            <div></div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile" name="image">
-                                                <label class="custom-file-label" for="customFile">Séléctionner une image</label>
+                                                <select class="form-control m-input m_selectpicker" name="evenement_categorie[]" data-live-search="true" title="" multiple>
+                                                    <option value=""></option>
+                                                    @foreach ($evenement_categories as $evenement_categorie)
+                                                        <option value="{{$evenement_categorie->id}}" >{{ $evenement_categorie->nom }}</option>
+                                                    @endforeach
+                                                </select>
                                             </div>
                                         </div>
                                     </div>
@@ -105,13 +112,10 @@
 
 
 <script>
-    var media  = document.getElementById('media');
-    media.setAttribute('class', 'm-menu__item m-menu__item--submenu m-menu__item--open');
-
-    var li  = document.getElementById('image');
+    var li  = document.getElementById('utilisateur');
     li.setAttribute('class', 'm-menu__item m-menu__item--submenu m-menu__item--open');
 
-    var active  = document.getElementById('create_image');
+    var active  = document.getElementById('create_utilisateur');
     active.setAttribute('class', 'm-menu__item m-menu__item--active');
 </script>
 

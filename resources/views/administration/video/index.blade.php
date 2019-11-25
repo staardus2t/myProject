@@ -67,7 +67,9 @@
                     <th>Titre</th>
                     <th>Description</th>
                     <th>Validé</th>
+                    @if(Auth::user()->role == 'Administrateur')
                     <th>Publié</th>
+                    @endif
                     <th>Ajouté par</th>
                     <th>Date de création</th>
                     <th>Date de modification</th>
@@ -88,9 +90,11 @@
                         <td>
                             <span class="m-badge m-badge--{{ $video->valide ? 'success' : 'danger'}} m-badge--wide">{{ $video->valide ? 'oui' : 'non' }}</span>
                         </td>
+                        @if(Auth::user()->role == 'Administrateur')
                         <td>
                             <span class="m-badge m-badge--{{ $video->publish ? 'success' : 'danger'}} m-badge--wide">{{ $video->publish ? 'oui' : 'non' }}</span>
                         </td>
+                        @endif
                         <td>
                             {{ $video->user->name }}
                         </td>
@@ -101,6 +105,9 @@
                             {{ $video->updated_at }}
                         </td>
                         <td style="text-align:center;">
+                            @if(Auth::user()->role == 'Contributeur' && $video->valide == true)
+                            -
+                            @else
                             <span class="dropdown">
                                 <a href="#" class="btn m-btn btn-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -135,6 +142,7 @@
                                     @endif
                                 </div>
                             </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

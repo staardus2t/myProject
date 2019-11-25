@@ -54,6 +54,7 @@ class ImageController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
+            'nom' => 'required|string|min:2',
             'image' => 'required|image|max:2000',
         ]);
 
@@ -82,6 +83,8 @@ class ImageController extends Controller
                 $image->image = $filename_image;
             }
 
+            $image->nom = $request->nom;
+            $image->user_id = Auth::user()->id;
             $image->save(); 
             return redirect()->route('image.index')->with('success', 'Enregistrement effectué');
         }
@@ -111,6 +114,27 @@ class ImageController extends Controller
         return view('administration.image.edit', $data);
     }
 
+    public function update(Request $request,Image $image)
+    {
+        $validator = Validator::make($request->all(), [
+            'nom' => 'required|string|min:2',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect()->back()
+                ->withErrors($validator)
+                ->withInput($request->all);
+        }
+
+
+        if ($request->isMethod('put')) {
+           
+            $image->nom = $request->nom;
+
+            $image->save(); 
+            return redirect()->route('image.index')->with('success', 'Modification effectuée');
+        }
+    }
 
     /**
      * Remove the specified resource from storage.

@@ -64,8 +64,11 @@
             <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items">
                 <thead>
                     <th>Image</th>
+                    <th>Nom</th>
                     <th>Validé</th>
+                    @if(Auth::user()->role == 'Administrateur')
                     <th>Publié</th>
+                    @endif
                     <th>Ajouté par</th>
                     <th>Date de création</th>
                     <th>Date de modification</th>
@@ -78,11 +81,16 @@
                             <img src="{{ asset('storage/uploads/images/'.$image->image) }}" alt="" style="width:100px">
                         </td>
                         <td>
+                            {{ $image->nom }}
+                        </td>
+                        <td>
                             <span class="m-badge m-badge--{{ $image->valide ? 'success' : 'danger'}} m-badge--wide">{{ $image->valide ? 'oui' : 'non' }}</span>
                         </td>
+                        @if(Auth::user()->role == 'Administrateur')
                         <td>
                             <span class="m-badge m-badge--{{ $image->publish ? 'success' : 'danger'}} m-badge--wide">{{ $image->publish ? 'oui' : 'non' }}</span>
                         </td>
+                        @endif
                         <td>
                             {{ $image->user->name }}
                         </td>
@@ -93,6 +101,9 @@
                             {{ $image->updated_at }}
                         </td>
                         <td style="text-align:center;">
+                            @if(Auth::user()->role == 'Contributeur' && $image->valide == true)
+                            -
+                            @else
                             <span class="dropdown">
                                 <a href="#" class="btn m-btn btn-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -112,8 +123,11 @@
                                         </a>
                                         @endif
                                     @endif
-                                    
-                                    @if(Auth::user()->role == 'Administrateur')
+
+                                    <a class="dropdown-item" href="{{route('image.edit',$image->id)}}">
+                                        <i class="la la-edit"></i> &nbsp; Modifer
+                                    </a>
+                                
                                     <form action="{{ route('image.destroy', $image->id)}}" method="POST" id="formDelete">
                                         @csrf
                                         @method('DELETE')
@@ -121,9 +135,9 @@
                                             <i class="la la-close"></i> &nbsp; Supprimer
                                         </button>
                                     </form>
-                                    @endif
                                 </div>
                             </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

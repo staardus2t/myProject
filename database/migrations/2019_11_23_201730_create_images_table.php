@@ -16,6 +16,7 @@ class CreateImagesTable extends Migration
         Schema::create('images', function (Blueprint $table) {
             $table->engine = 'InnoDB';
             $table->bigIncrements('id');
+            $table->string('nom');
             $table->boolean('valide')->default(false);
             $table->boolean('publish')->default(false);
             $table->string('image');

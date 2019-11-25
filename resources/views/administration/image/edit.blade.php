@@ -25,7 +25,7 @@
                 <li class="m-nav__separator">-</li>
                 <li class="m-nav__item">
                     <a href="" class="m-nav__link">
-                        <span class="m-nav__link-text">Ajouter image</span>
+                        <span class="m-nav__link-text">Modifer image</span>
                     </a>
                 </li>
             </ul>
@@ -39,8 +39,9 @@
     <div class="row">
         <div class="col-lg-12">
             <form class="m-form m-form--label-align-left- m-form--state-" id="m_form"
-            action="{{route('image.store')}}" method="POST" enctype="multipart/form-data">
+            action="{{route('image.update',$image->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
+            @method('PUT')
             <!--begin::Portlet-->
             <div class="m-portlet m-portlet--last m-portlet--head-lg m-portlet--responsive-mobile" id="main_portlet">
                     <div class="m-portlet__head">
@@ -52,7 +53,7 @@
                             <div class="m-portlet__head-caption">
                                 <div class="m-portlet__head-title">
                                     <h3 class="m-portlet__head-text">
-                                        Nouvelle Image
+                                        Modier Image
                                     </h3>
                                 </div>
                             </div>
@@ -79,15 +80,7 @@
                                             <label class="col-xl-2 col-lg-2 col-form-label">* Nom :</label>
                                             <div class="col-xl-10 col-lg-10">
                                                 <input class="form-control m-input" type="text" name="nom" dir="rtl"
-                                                    value="{{ old('nom') }}">
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group">
-                                            <label for="exampleInputEmail1">* Image :</label>
-                                            <div></div>
-                                            <div class="custom-file">
-                                                <input type="file" class="custom-file-input" id="customFile" name="image">
-                                                <label class="custom-file-label" for="customFile">Séléctionner une image</label>
+                                                    value="{{ $image->nom }}">
                                             </div>
                                         </div>
                                     </div>

@@ -66,10 +66,11 @@
                     <th>Titre</th>
                     <th>Catégorie</th>
                     <th>Date</th>
-                    <th>Auteur</th>
                     <th>Commentaire</th>
                     <th>Validé</th>
+                    @if(Auth::user()->role == 'Administrateur')
                     <th>Publié</th>
+                    @endif
                     <th>Ajouté par</th>
                     <th>Date de création</th>
                     <th>Date de modification</th>
@@ -88,9 +89,6 @@
                             {{ $article->date }}
                         </td>
                         <td>
-                            {{ $article->auteur }}
-                        </td>
-                        <td>
                         @if(Auth::user()->role == 'Administrateur')
                             @if($article->commentaire->count() > 0)
                                 <a href="{{route('commentaire.index',$article->slug)}}">Liste des commentaire</a>
@@ -100,9 +98,11 @@
                         <td>
                             <span class="m-badge m-badge--{{ $article->valide ? 'success' : 'danger'}} m-badge--wide">{{ $article->valide ? 'oui' : 'non' }}</span>
                         </td>
+                        @if(Auth::user()->role == 'Administrateur')
                         <td>
                             <span class="m-badge m-badge--{{ $article->publish ? 'success' : 'danger'}} m-badge--wide">{{ $article->publish ? 'oui' : 'non' }}</span>
                         </td>
+                        @endif
                         <td>
                             {{ $article->user->name }}
                         </td>
@@ -113,6 +113,9 @@
                             {{ $article->updated_at }}
                         </td>
                         <td style="text-align:center;">
+                            @if(Auth::user()->role == 'Contributeur' && $article->valide == true)
+                            -
+                            @else
                             <span class="dropdown">
                                 <a href="#" class="btn m-btn btn-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -132,11 +135,11 @@
                                         </a>
                                         @endif
                                     @endif
+
                                     <a class="dropdown-item" href="{{route('article.edit',$article->slug)}}">
                                         <i class="la la-edit"></i> &nbsp; Modifer
                                     </a>
                                     
-                                    @if(Auth::user()->role == 'Administrateur')
                                     <form action="{{ route('article.destroy', $article->slug)}}" method="POST" id="formDelete">
                                         @csrf
                                         @method('DELETE')
@@ -144,9 +147,9 @@
                                             <i class="la la-close"></i> &nbsp; Supprimer
                                         </button>
                                     </form>
-                                    @endif
                                 </div>
                             </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

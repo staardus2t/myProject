@@ -4,7 +4,7 @@
 <div class="m-subheader ">
     <div class="d-flex align-items-center">
         <div class="mr-auto">
-            <h3 class="m-subheader__title m-subheader__title--separator">Liste des Droit d'accès</h3>
+            <h3 class="m-subheader__title m-subheader__title--separator">Liste des Droit d'accès de &nbsp; : &nbsp; <strong>{{ $user->name}}</strong></h3>
             <ul class="m-subheader__breadcrumbs m-nav m-nav--inline">
                 <li class="m-nav__item m-nav__item--home">
                     <a href="#" class="m-nav__link m-nav__link--icon">
@@ -40,14 +40,14 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Liste des Droits d'accès des catégories d'articles de &nbsp; : &nbsp; <strong>{{ $user->name}}</strong>
+                        Liste des Droits d'accès des catégories d'articles
                     </h3>
                 </div>
             </div>
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a href="{{ route('categorie_droit_acces.create',$user->id) }}" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air">
+                        <a href="{{ route('categorie_droit_acces.article_create',$user->id) }}" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air">
                             <span>
                                 <i class="la la-plus-circle"></i>
                                 <span>Ajouter droit d'accès</span>
@@ -96,6 +96,7 @@
                                         <button class="dropdown-item" onclick="return confirm('Confirmer cette action ?');" type="submit">
                                             <i class="la la-close"></i> &nbsp; Supprimer
                                         </button>
+                                    </form>
                                 </div>
                             </span>
                         </td>
@@ -113,14 +114,14 @@
             <div class="m-portlet__head-caption">
                 <div class="m-portlet__head-title">
                     <h3 class="m-portlet__head-text">
-                        Liste des Droits d'accès des catégories des événements de &nbsp; : &nbsp; <strong>{{ $user->name}}</strong>
+                        Liste des Droits d'accès des catégories des événements
                     </h3>
                 </div>
             </div>
             <div class="m-portlet__head-tools">
                 <ul class="m-portlet__nav">
                     <li class="m-portlet__nav-item">
-                        <a href="{{ route('categorie_droit_acces.create',$user->id) }}" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air">
+                        <a href="{{ route('categorie_droit_acces.evenement_create',$user->id) }}" class="btn btn-primary m-btn m-btn--pill m-btn--custom m-btn--icon m-btn--air">
                             <span>
                                 <i class="la la-plus-circle"></i>
                                 <span>Ajouter droit d'accès</span>
@@ -169,6 +170,7 @@
                                         <button class="dropdown-item" onclick="return confirm('Confirmer cette action ?');" type="submit">
                                             <i class="la la-close"></i> &nbsp; Supprimer
                                         </button>
+                                    </form>
                                 </div>
                             </span>
                         </td>

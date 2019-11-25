@@ -69,7 +69,9 @@
                     <th>Date début</th>
                     <th>Date fin</th>
                     <th>Validé</th>
+                    @if(Auth::user()->role == 'Administrateur')
                     <th>Publié</th>
+                    @endif
                     <th>Ajouté par</th>
                     <th>Date de création</th>
                     <th>Date de modification</th>
@@ -96,9 +98,11 @@
                         <td>
                             <span class="m-badge m-badge--{{ $evenement->valide ? 'success' : 'danger'}} m-badge--wide">{{ $evenement->valide ? 'oui' : 'non' }}</span>
                         </td>
+                        @if(Auth::user()->role == 'Administrateur')
                         <td>
                             <span class="m-badge m-badge--{{ $evenement->publish ? 'success' : 'danger'}} m-badge--wide">{{ $evenement->publish ? 'oui' : 'non' }}</span>
                         </td>
+                        @endif
                         <td>
                             {{ $evenement->user->name }}
                         </td>
@@ -109,6 +113,9 @@
                             {{ $evenement->updated_at }}
                         </td>
                         <td style="text-align:center;">
+                            @if(Auth::user()->role == 'Contributeur' && $evenement->valide == true)
+                            -
+                            @else
                             <span class="dropdown">
                                 <a href="#" class="btn m-btn btn-accent m-btn--icon m-btn--icon-only m-btn--pill" data-toggle="dropdown"
                                     aria-expanded="false">
@@ -132,7 +139,6 @@
                                         <i class="la la-edit"></i> &nbsp; Modifer
                                     </a>
                                     
-                                    @if(Auth::user()->role == 'Administrateur')
                                     <form action="{{ route('evenement.destroy', $evenement->slug)}}" method="POST" id="formDelete">
                                         @csrf
                                         @method('DELETE')
@@ -140,9 +146,9 @@
                                             <i class="la la-close"></i> &nbsp; Supprimer
                                         </button>
                                     </form>
-                                    @endif
                                 </div>
                             </span>
+                            @endif
                         </td>
                     </tr>
                     @endforeach

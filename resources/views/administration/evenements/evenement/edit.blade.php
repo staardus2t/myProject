@@ -242,6 +242,7 @@
                     </div>
                 </div>
             </div>
+            @if(Auth::user()->role == 'Administrateur')
             <div class="col-lg-6">
                 <div class="m-portlet">
                         <div class="m-portlet__head">
@@ -310,6 +311,7 @@
     
                 <!--end::Portlet-->
             </div>
+            @endif
         </div>
 </div>
 @section('ckeditor')
