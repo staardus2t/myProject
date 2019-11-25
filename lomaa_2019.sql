@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  Dim 24 nov. 2019 à 19:57
+-- Généré le :  lun. 25 nov. 2019 à 04:33
 -- Version du serveur :  10.4.8-MariaDB
 -- Version de PHP :  7.3.10
 
@@ -60,7 +60,7 @@ INSERT INTO `articles` (`id`, `titre`, `contenu`, `date`, `auteur`, `image`, `fi
 (9, 'test', '<p>qsdqsd</p>', '2019-11-24 00:00:00', 'qsdqsdsd', 'yJpdiI6IjdvZFwvbFdOMldEUGcyQSt6YjRKRHF3PT0iLCJ2YWx.jpg', NULL, 'nFQSzU2N0tjWXFodjFlb', 2, 4, 1, 1, '2019-11-23 23:19:14', '2019-11-24 05:56:05'),
 (10, 'test', '<p>qsdqsd</p>', '2019-11-24 00:00:00', 'qsdqsd', 'yJpdiI6IktiTVNuaFFOcW1GYTFJaStKRG1BcFE9PSIsInZhbHV.jpg', NULL, 'lwvblpRMVJQZFR6S1lpa', 1, 4, 1, 1, '2019-11-24 00:22:52', '2019-11-24 16:30:53'),
 (11, 'وريم ايبسوم هو نموذج افتراضي يوضع في التصاميم لتعرض', '<p>sqsssssssssssssssssssssssssss</p>', '2019-11-24 00:00:00', 'وريم ايبسوم', 'yJpdiI6ImFka0ZydjVUOGJBdVI3M01kb3puNHc9PSIsInZhbHV.jpg', NULL, 'llhVjhaYm0xeno5VXA0N', 2, 4, 1, 0, '2019-11-24 00:25:17', '2019-11-24 16:28:17'),
-(12, 'kjkjkjkj', '<p>kjuhkjhkjh</p>', '2019-11-24 00:00:00', 'jhgjhgjhgjh', 'yJpdiI6Imh4Tk1aUHpsRDdzNllONW1LdTdqdEE9PSIsInZhbHV.jpg', NULL, 'eyJpdiI6ImZzd2pHV1hnVkNFW', 2, 4, 0, 0, '2019-11-24 16:51:45', '2019-11-24 17:01:30');
+(12, 'kjkjkjkj', '<p>kjuhkjhkjh</p>', '2019-11-24 00:00:00', 'jhgjhgjhgjh', 'yJpdiI6Imh4Tk1aUHpsRDdzNllONW1LdTdqdEE9PSIsInZhbHV.jpg', 'yJpdiI6ImVGSjc4eDRvRjZIeEFSektuRVoyZ3c9PSIsInZhbHV.docx', 'eyJpdiI6ImQ1b1hlZSs2aU4xb', 2, 4, 1, 0, '2019-11-24 16:51:45', '2019-11-25 01:37:45');
 
 -- --------------------------------------------------------
 
@@ -109,13 +109,6 @@ CREATE TABLE `categorie_droit_acces` (
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
---
--- Déchargement des données de la table `categorie_droit_acces`
---
-
-INSERT INTO `categorie_droit_acces` (`user_id`, `categorie_id`, `created_at`, `updated_at`) VALUES
-(1, 4, NULL, NULL);
-
 -- --------------------------------------------------------
 
 --
@@ -153,13 +146,6 @@ CREATE TABLE `categorie_evenement_droit_acces` (
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Déchargement des données de la table `categorie_evenement_droit_acces`
---
-
-INSERT INTO `categorie_evenement_droit_acces` (`user_id`, `categorie_id`, `created_at`, `updated_at`) VALUES
-(2, 3, '2019-11-24 16:49:30', '2019-11-24 16:49:30');
 
 -- --------------------------------------------------------
 
@@ -264,6 +250,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `images` (
   `id` bigint(20) UNSIGNED NOT NULL,
+  `nom` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `valide` tinyint(1) NOT NULL DEFAULT 0,
   `publish` tinyint(1) NOT NULL DEFAULT 0,
   `image` varchar(191) COLLATE utf8mb4_unicode_ci NOT NULL,
@@ -276,10 +263,11 @@ CREATE TABLE `images` (
 -- Déchargement des données de la table `images`
 --
 
-INSERT INTO `images` (`id`, `valide`, `publish`, `image`, `user_id`, `created_at`, `updated_at`) VALUES
-(1, 0, 0, 'yJpdiI6InNKZDJxUDVMRXlLcXF3dWVLMmN4ZWc9PSIsInZhbHV.jpg', 1, '2019-11-23 19:34:18', '2019-11-23 20:08:36'),
-(2, 0, 0, 'yJpdiI6ImNcL3JITCtqbXJ5TlhiNnJndFord3BBPT0iLCJ2YWx.jpg', 1, '2019-11-23 19:34:32', '2019-11-23 20:08:29'),
-(3, 1, 1, 'yJpdiI6ImpNRnhkWlJBaG0ySkVGN2VCT29wcWc9PSIsInZhbHV.jpg', 1, '2019-11-23 19:34:47', '2019-11-23 20:08:50');
+INSERT INTO `images` (`id`, `nom`, `valide`, `publish`, `image`, `user_id`, `created_at`, `updated_at`) VALUES
+(1, '', 0, 0, 'yJpdiI6InNKZDJxUDVMRXlLcXF3dWVLMmN4ZWc9PSIsInZhbHV.jpg', 1, '2019-11-23 19:34:18', '2019-11-23 20:08:36'),
+(2, '', 0, 0, 'yJpdiI6ImNcL3JITCtqbXJ5TlhiNnJndFord3BBPT0iLCJ2YWx.jpg', 1, '2019-11-23 19:34:32', '2019-11-23 20:08:29'),
+(3, '', 1, 1, 'yJpdiI6ImpNRnhkWlJBaG0ySkVGN2VCT29wcWc9PSIsInZhbHV.jpg', 1, '2019-11-23 19:34:47', '2019-11-23 20:08:50'),
+(4, 'test', 1, 0, 'yJpdiI6IjNhZVVwQzRmR2ljNU9VUWkyXC9MQUJnPT0iLCJ2YWx.jpg', 2, '2019-11-25 02:05:42', '2019-11-25 02:07:08');
 
 -- --------------------------------------------------------
 
@@ -600,7 +588,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT pour la table `images`
 --
 ALTER TABLE `images`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 
 --
 -- AUTO_INCREMENT pour la table `migrations`
