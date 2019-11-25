@@ -371,10 +371,13 @@
 
                                     <div class="package__img">
                                         <img src="{{asset('storage/uploads/images/'.$edition->image)}}" alt="" style="width:200px">
-
+                                            <a href="{{ route('site.edition_show',$edition->slug) }}" >
+                                            <h3 class="blog__title text-right">{{ $edition->titre }}</h3>
+                                            </a>
                                     </div>
                                 </div>
                                 <div class="package-bottom text-right">
+                                
                                     <p class="package__desc">
                                         {!! substr($edition->description,0,250) !!}
                                     </p>
@@ -444,7 +447,7 @@
                                     </a>
                                 </h3>
                                 <ul class="blog__list text-right">
-                                <li class="blog__dot-active">{{ date('d-m-Y H:i',strtotime($event->date_debut)) }} to {{ date('d-m-Y H:i',strtotime($event->date_fin)) }}</li>
+                                <li class="blog__dot-active">{{ date('d-m-Y H:i',strtotime($event->date)) }}</li>
                                     <li>{{ $event->lieu }}</li>
                                 </ul>
                             </div>

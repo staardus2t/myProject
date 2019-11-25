@@ -53,7 +53,7 @@ END BREADCRUMB AREA
                                 </h3>
                                 <ul class="blog__list text-right">
                                     <li class="blog__dot-active">
-                                        {{ date('d-m-Y H:i',strtotime($evenement->date_debut)) }} to {{ date('d-m-Y H:i',strtotime($evenement->date_fin)) }}</li>
+                                        {{ date('d-m-Y H:i',strtotime($evenement->date)) }} </li>
                                     <li>{{ $evenement->lieu }}</li>
                                 </ul>
                             </div>

@@ -18,12 +18,13 @@ class CreateEvenementsTable extends Migration
             $table->bigIncrements('id');
             $table->string('titre');
             $table->text('contenu');
-            $table->dateTime('date_debut')->nullable();
-            $table->dateTime('date_fin')->nullable();
+            $table->dateTime('date')->nullable();
             $table->string('image')->nullable();
             $table->string('slug');
             $table->string('intervenant')->nullable();
             $table->string('lieu')->nullable();
+            $table->string('adresse')->nullable();
+            $table->string('site')->nullable();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('categorie_id');
             $table->foreign('user_id')->references('id')->on('users');

@@ -30,10 +30,11 @@
                             <div class="package-top">
                                 <div class="package__img">
                                     <img src="{{asset('storage/uploads/images/'.$edition->image)}}" alt="" style="width:200px">
-
+                                    <h5>{{ $edition->titre }}</h5>
                                 </div>
                             </div>
                             <div class="package-bottom text-right mt-5">
+                            
                                 <p class="package__desc">
                                     {!! substr($edition->description,0,250) !!}
                                 </p>

@@ -6,7 +6,7 @@
                 <div class="col-lg-12">
                     <div class="blog-content">
                         <div class="blog-item">
-                            <div class="blog-img">
+                            <div class="blog-img text-center">
                                 <img src="{{asset('storage/uploads/images/'.$edition->image)}}" alt="" style="width:250px">
                                 {{-- <span class="blog__tag">
                                     <span class="date__num-text">9</span>
@@ -37,8 +37,8 @@
                 <div class="col-lg-8">
                     <div class="event-detail-content">
                         <div class="event-detail-item text-right">
-                            <h3 class="event__title text-right">{{ $edition->titre }}</h3>
-                            {!! $edition->contenu !!}
+                            <h3 class="event__title text-right">{{ $edition->titre   }}</h3>
+                            {!! $edition->description !!}
 
                     </div>
                 </div><!-- end col-lg-8 -->

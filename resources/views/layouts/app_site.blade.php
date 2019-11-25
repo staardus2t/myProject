@@ -71,20 +71,28 @@
                             <div class="ostion-menu-content">
                                 <div class="navigation-top">
                                     <nav class="main-navigation ar-font">
+                                            @php 
+                                                $categorie_evenements = App\Categorie_evenement::where('valide',true)->where('publish',true)->get();
+
+                                                $categorie_articles = App\Categorie::where('id','!=',17)->where('id','!=',18)->where('valide',true)->where('publish',true)->get()
+                                            @endphp
                                         <ul>
                                         <li><a href="{{ route('site.edition_all') }}">إصدارات</a></li>
-                                            <li><a href="#">أنشطة</a>
+                                        @if($categorie_evenements->count() > 0)
+                                            <li>
+                                                <a href="#">أنشطة</a>
                                                 <ul class="dropdown-menu-item dropdown-menu-right text-right">
-                                                @foreach(App\Categorie_evenement::all() as $categorie_evenement)
+                                                @foreach($categorie_evenements as $categorie_evenement)
                                                     <li><a href="{{ route('site.evenement_categorie',$categorie_evenement->slug) }}">{{ $categorie_evenement->nom }}</a></li>
                                                 @endforeach
                                                 </ul>
                                             </li>
+                                            @endif
                                             <li><a href="{{ route('site.article_categorie','mJ1RmRJNWFOUjVKcUorV') }}">حوارات</a></li>
                                             <li><a href="{{ route('site.article_categorie','k1oTEJwdVpxSUFGZ1wvN') }}">حلق علمية</a></li>
                                             <li><a href="#">وحدات لمع</a>
                                                 <ul class="dropdown-menu-item dropdown-menu-right text-right">
-                                                    @foreach(App\Categorie::all() as $categorie)
+                                                    @foreach($categorie_articles as $categorie)
                                                         <li><a href="{{ route('site.article_categorie',$categorie->slug) }}">{{ $categorie->nom }}</a></li>
                                                     @endforeach
                                                 </ul>

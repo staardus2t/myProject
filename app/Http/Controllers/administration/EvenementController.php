@@ -70,12 +70,13 @@ class EvenementController extends Controller
         $validator = Validator::make($request->all(), [
             'titre' => 'required|string|min:2|max:255',
             'contenu' => 'required|min:2|string',
-            'date_debut' => 'required|date',
-            'date_fin' => 'required|date',
+            'date' => 'required|date',
             'image' => 'required|image|max:2000',
             'categorie' => 'required|exists:categorie_evenements,id',
             'lieu' => 'required|min:2|string',
             'intervenant' => 'required|min:2|string',
+            'adresse' => 'nullable|min:2|string',
+            'site' => 'nullable|min:2|string',
         ]);
 
         if ($validator->fails()) {
@@ -124,19 +125,15 @@ class EvenementController extends Controller
             }
             ///////////DROIT ACCES//////////////////
 
-            // date debut et fin
-            if(empty($request->date_debut)){
-                $evenement->date_debut = NULL;
+            /////////// date //////////////
+            if(empty($request->date)){
+                $evenement->date = NULL;
             }else{
-                $evenement->date_debut = date('Y-m-d', strtotime($request->date_debut)) . ' ' . date('H:i:s', strtotime($request->heure_debut));
-            }
-            if(empty($request->date_fin)){
-                $evenement->date_fin = NULL;
-            }else{
-                $evenement->date_fin = date('Y-m-d', strtotime($request->date_fin)) . ' ' . date('H:i:s', strtotime($request->heure_fin));
+                $evenement->date = date('Y-m-d', strtotime($request->date)) . ' ' . date('H:i:s', strtotime($request->heure));
             }
             ///////////////////
-            
+            $evenement->adresse = $request->adresse;
+            $evenement->site = $request->site;
 
             $evenement->save();
             return redirect()->route('evenement.index')->with('success', 'Enregistrement effectué');
@@ -200,12 +197,13 @@ class EvenementController extends Controller
         $validator = Validator::make($request->all(), [
             'titre' => 'required|string|min:2|max:255',
             'contenu' => 'required|min:2|string',
-            'date_debut' => 'required|date',
-            'date_fin' => 'required|date',
+            'date' => 'required|date',
             'image' => 'nullable|image|max:2000',
             'categorie' => 'required|exists:categorie_evenements,id',
             'lieu' => 'required|min:2|string',
             'intervenant' => 'required|min:2|string',
+            'adresse' => 'nullable|min:2|string',
+            'site' => 'nullable|min:2|string',
         ]);
 
         if ($validator->fails()) {
@@ -214,7 +212,7 @@ class EvenementController extends Controller
                 ->withInput($request->all);
         }
 
-
+        
         if ($request->isMethod('put')) {
             $storage_image = false;
 
@@ -252,18 +250,17 @@ class EvenementController extends Controller
             }
             ///////////DROIT ACCES//////////////////
 
-            // date debut et fin
-            if(empty($request->date_debut)){
-                $evenement->date_debut = NULL;
+            /////////// date //////////////
+            if(empty($request->date)){
+                $evenement->date = NULL;
             }else{
-                $evenement->date_debut = date('Y-m-d', strtotime($request->date_debut)) . ' ' . date('H:i:s', strtotime($request->heure_debut));
-            }
-            if(empty($request->date_fin)){
-                $evenement->date_fin = NULL;
-            }else{
-                $evenement->date_fin = date('Y-m-d', strtotime($request->date_fin)) . ' ' . date('H:i:s', strtotime($request->heure_fin));
+                $evenement->date = date('Y-m-d', strtotime($request->date)) . ' ' . date('H:i:s', strtotime($request->heure));
             }
             ///////////////////
+            $evenement->adresse = $request->adresse;
+            $evenement->site = $request->site;
+
+
             if($evenement->image == NULL){
                 return redirect()->back()->withInput($request->all)->with('error', 'Vous devez ajouter une image');
             }

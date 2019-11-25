@@ -23,20 +23,19 @@
                             <h3 class="event__title">معلومات عن النشاط</h3>
                             <ul class="event__list text-right">
                                 <li>
-                                    <span>Starting Time:</span> 
-                                    {{ date('d-m-Y H:i',strtotime($evenement->date_debut)) }} to {{ date('d-m-Y H:i',strtotime($evenement->date_fin)) }} 
+                                    <span>التؤقيت:</span> 
+                                    {{ date('H:i',strtotime($evenement->date)) }}  
                                 </li>
                                 <li>
                                     <span>التاريخ :</span>
-                                    {{ date('d-m-Y',strtotime($evenement->date_debut)) }}
+                                    {{ date('d-m-Y',strtotime($evenement->date)) }}
                                 </li>
                                 <li>
-                                    <span>Category:</span>
+                                    <span>الصنف :</span>
                                     {{ $evenement->categorie->nom }}
                                 </li>
-                                <li>666 888 0000 <span>Phone:</span></li>
-                                <li>Info@event.com <span>Website:</span></li>
-                                <li>8 Street, San Marcos London D29, UK <span>Location:</span></li>
+                                <li>{{ $evenement->site }} <span>الموقع:</span></li>
+                                <li> {{ $evenement->adresse}} <span>العنوان:</span></li>
                             </ul>
                         </div>
                     </div>

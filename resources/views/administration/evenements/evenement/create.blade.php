@@ -117,10 +117,10 @@
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-2 col-sm-12">* Date début :</label>
+                                            <label class="col-form-label col-lg-2 col-sm-12">* Date :</label>
                                             <div class="col-lg-3 col-md-9 col-sm-12">
                                                 <div class="input-group date">
-                                                    <input name="date_debut" type="text" class="form-control m-input" readonly placeholder="" id="m_datepicker_2"   />
+                                                    <input name="date" type="text" class="form-control m-input" readonly placeholder="" id="m_datepicker_2"   />
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <i class="la la-calendar-check-o"></i>
@@ -131,11 +131,11 @@
                                         </div>
 
                                         <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-2 col-sm-12">* Heure début :</label>
+                                            <label class="col-form-label col-lg-2 col-sm-12">* Heure :</label>
                                             <div class="col-lg-3 col-md-9 col-sm-12">
                                                 <div class="input-group timepicker">
                                                     <input class="form-control m-input" id="timepicker" readonly placeholder="00:00" type="text" 
-                                                     name="heure_debut" value="{{ old('heure_debut') }}"/>
+                                                     name="heure_debut" value="{{ old('heure') }}"/>
                                                     <div class="input-group-append">
                                                         <span class="input-group-text">
                                                             <i class="la la-clock-o"></i>
@@ -144,36 +144,22 @@
                                                 </div>
                                             </div>
                                         </div>
-
                                         <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-2 col-sm-12">* Date fin :</label>
-                                            <div class="col-lg-3 col-md-9 col-sm-12">
-                                                <div class="input-group date">
-                                                    <input name="date_fin" type="text" class="form-control m-input" readonly placeholder="" id="m_datepicker_2"  />
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text">
-                                                            <i class="la la-calendar-check-o"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                            <label class="col-xl-2 col-lg-2 col-form-label">* Adresse :</label>
+                                            <div class="col-xl-10 col-lg-10">
+                                                <textarea name="adresse" class="form-control" dir="rtl">
+                                                    {{ old('adresse') }}
+                                                </textarea>
                                             </div>
                                         </div>
 
                                         <div class="form-group m-form__group row">
-                                            <label class="col-form-label col-lg-2 col-sm-12">* Heure fin :</label>
-                                            <div class="col-lg-3 col-md-9 col-sm-12">
-                                                <div class="input-group timepicker">
-                                                    <input class="form-control m-input" id="timepicker2" readonly placeholder="00:00" type="text" 
-                                                     name="heure_fin" value="{{ old('heure_fin') }}"/>
-                                                    <div class="input-group-append">
-                                                        <span class="input-group-text">
-                                                            <i class="la la-clock-o"></i>
-                                                        </span>
-                                                    </div>
-                                                </div>
+                                            <label class="col-xl-2 col-lg-2 col-form-label">* Site :</label>
+                                            <div class="col-xl-10 col-lg-10">
+                                                <input class="form-control m-input" type="text" name="site"
+                                                    value="{{ old('site') }}">
                                             </div>
                                         </div>
-
 
                                     </div>
                                     <div class="m-separator m-separator--dashed m-separator--lg"></div>

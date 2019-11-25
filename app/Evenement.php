@@ -11,7 +11,7 @@ class Evenement extends Model
     protected $guarded = [];
 
     protected $hidden  = [
-        'slug','user_id','categorie_evenement_id','valide','publish'
+        'slug','user_id','categorie_id','valide','publish'
     ];
 
 

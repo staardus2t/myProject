@@ -67,8 +67,9 @@
                     <th>Titre</th>
                     <th>Catégorie</th>
                     <th>Lieu</th>
-                    <th>Date début</th>
-                    <th>Date fin</th>
+                    <th>Adresse</th>
+                    <th>Site</th>
+                    <th>Date</th>
                     <th>Validé</th>
                     @if(Auth::user()->role == 'Administrateur')
                     <th>Publié</th>
@@ -94,10 +95,13 @@
                             {{ $evenement->lieu }}
                         </td>
                         <td>
-                            {{ $evenement->date_debut }}
+                            {{ $evenement->adresse }}
                         </td>
                         <td>
-                            {{ $evenement->date_fin }}
+                            {{ $evenement->site }}
+                        </td>
+                        <td>
+                            {{ $evenement->date }}
                         </td>
                         <td>
                             <span class="m-badge m-badge--{{ $evenement->valide ? 'success' : 'danger'}} m-badge--wide">{{ $evenement->valide ? 'oui' : 'non' }}</span>
