@@ -100,28 +100,29 @@
                                     </div><!-- end comment__boxed -->
                                     <div class="comment__form form-shared">
                                         <h3 class="single__comment-title">أترك تعليق</h3>
-                                        <form action="#">
+                                        <form action="{{ route('site.ajouter_commentaire',$article->id) }}" method="POST">
+                                            @csrf
                                             <div class="row">
                                                 <div class="col-lg-6 col-sm-6">
                                                     <div class="form-group">
-                                                        <input type="text" class="form-control text-right"
+                                                        <input name="nom" type="text" class="form-control text-right"
                                                             placeholder="الاسم الكامل">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-6 col-sm-6">
                                                     <div class="form-group">
-                                                        <input type="email" class="form-control text-right"
+                                                        <input name="email" type="email" class="form-control text-right"
                                                             placeholder="البريد الاكتروني">
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
                                                     <div class="form-group">
-                                                        <textarea class="textarea text-right" name="message"
+                                                        <textarea name="contenu" class="textarea text-right" name="message"
                                                             placeholder=" ... تعليقك"></textarea>
                                                     </div>
                                                 </div>
                                                 <div class="col-lg-12">
-                                                    <button class="theme-btn submit__btn">أضف</button>
+                                                    <button type="submit" class="theme-btn submit__btn">أضف</button>
                                                 </div>
                                             </div><!-- end row -->
                                         </form>

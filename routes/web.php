@@ -120,6 +120,10 @@ Route::get('/articles/{slug}','site\ArticleController@article_categorie')->name(
 Route::get('/article/{slug}','site\ArticleController@article_show')->name('site.article_show');
 Route::get('/articles','site\ArticleController@article_all')->name('site.article_all');
 
+//Commentaire
+Route::post('/commentaire/{article}', 'site\CommentaireController@ajouter_commentaire')->name('site.ajouter_commentaire');
+
+
  //Evenement
  Route::get('/evenements/{slug}','site\EvenementController@evenement_categorie')->name('site.evenement_categorie');
  Route::get('/evenement/{slug}','site\EvenementController@evenement_show')->name('site.evenement_show');

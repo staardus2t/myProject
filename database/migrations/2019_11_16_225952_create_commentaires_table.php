@@ -15,6 +15,8 @@ class CreateCommentairesTable extends Migration
     {
         Schema::create('commentaires', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nom');
+            $table->string('email');
             $table->text('contenu');
             $table->boolean('valide')->default(false);
             $table->boolean('publish')->default(false);
