@@ -8,6 +8,7 @@ use App\Categorie_evenement;
 use App\Edition;
 use App\Evenement;
 use App\Http\Controllers\Controller;
+use App\Image;
 use App\Slider;
 use App\Video;
 use Illuminate\Http\Request;
@@ -47,6 +48,11 @@ class IndexController extends Controller
                             ->where('valide',true)
                             ->where('publish',true)
                             ->first();
+
+        $data['images'] = Image::orderBy('created_at','DESC')
+                            ->where('valide',true)
+                            ->where('publish',true)
+                            ->get();
 
 
         return view('site.index',$data);

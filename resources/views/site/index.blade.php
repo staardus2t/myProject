@@ -326,25 +326,13 @@
             <div class="row gallery-wrap">
                 <div class="col-lg-12">
                     <div class="gallery-carousel">
+                        @foreach($images as $image)
                         <div class="gallery-item">
-                            <img src="{{ asset('site_assets/images/gallery-img.jpg')}}" alt="">
-                            <a href="{{ asset('site_assets/images/Easter-Vigil-1024x512.jpg')}}" data-lightbox="roadtrip"
-                                data-title="Gallery One"> <span class="gallery-icon"></span></a>
+                            <img src="{{ asset('storage/uploads/images/'.$image->image)}}" alt="">
+                            <a href="{{ asset('storage/uploads/images/'.$image->image)}}" data-lightbox="roadtrip"
+                                data-title="{{ $image->nom }}"> <span class="gallery-icon"></span></a>
                         </div><!-- end gallery-item -->
-                        <div class="gallery-item">
-                            <img src="{{ asset('site_assets/images/gallery-img2.jpg')}}" alt="">
-                            <a href="{{ asset('site_assets/images/gallery-img2.jpg')}}" data-lightbox="roadtrip" data-title="Gallery Two"> <span
-                                    class="gallery-icon"></span></a>
-                        </div><!-- end gallery-item -->
-                        <div class="gallery-item">
-                            <img src="{{ asset('site_assets/images/gallery-img3.jpg')}}" alt="">
-                            <a href="{{ asset('site_assets/images/gallery-img3.jpg')}}" data-lightbox="roadtrip" data-title="Gallery Three"> <span
-                                    class="gallery-icon"></span></a>
-                        </div><!-- end gallery-item -->
-
-
-
-
+                        @endforeach
 
                     </div><!-- end gallery-carousel -->
                 </div><!-- end col-lg-12 -->

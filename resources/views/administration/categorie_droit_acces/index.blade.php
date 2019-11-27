@@ -62,7 +62,7 @@
         <div class="m-portlet__body">
 
             <!--begin: Datatable -->
-            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items">
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_drois_acces_articles">
                 <thead>
                     <th>Catégorie</th>
                     <th>Date de création</th>
@@ -136,7 +136,7 @@
         <div class="m-portlet__body">
 
             <!--begin: Datatable -->
-            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_items">
+            <table class="table table-striped- table-bordered table-hover table-checkable" id="list_drois_acces_evenements">
                 <thead>
                     <th>Catégorie</th>
                     <th>Date de création</th>
@@ -182,13 +182,91 @@
         </div>
     </div>
 
+    {{-- //////////////////Droit accès evenement//////////////// --}}
+    <div class="m-portlet m-portlet--mobile">
+        <div class="m-portlet__head">
+            <div class="m-portlet__head-caption">
+                <div class="m-portlet__head-title">
+                    <h3 class="m-portlet__head-text">
+                        Editions et Médias
+                    </h3>
+                </div>
+            </div>
+            
+        </div>
+        <div class="m-portlet__body">
+        <form class="m-form" action="{{ route('edition_media_droit_acces.store',$user->id) }}" method="POST">
+            @csrf
+            @method('PUT')
+                    <div class="m-portlet__body">
+                        <div class="m-form__section m-form__section--first">
+                            <div class="form-group m-form__group row">
+                                
+                                <div class="col-lg-12 col-xl-8">
+                                    <div class="m-checkbox-inline m--padding-top-3">
+                                        <label class="m-checkbox">
+                                            <input {{ $user->edition ? 'checked' : '' }} name="ck_edition" type="checkbox"> Editions
+                                            <span></span>
+                                        </label>
+                                        <label class="m-checkbox">
+                                            <input {{ $user->image ? 'checked' : '' }} name="ck_image" type="checkbox"> Images
+                                            <span></span>
+                                        </label>
+                                        <label class="m-checkbox">
+                                            <input {{ $user->video ? 'checked' : '' }} name="ck_video" type="checkbox"> Vidéos
+                                            <span></span>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="m-portlet__foot m-portlet__foot--fit">
+                        <div class="m-form__actions m-form__actions">
+                            <div class="row">
+                                <div class="col-lg-6">
+                                    <button type="submit" class="btn btn-primary">Valider</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+        </div>
+    </div>
+
 
     <!-- END EXAMPLE TABLE PORTLET-->
 </div>
 
 @section('datatable')
 <script>
-		$("#list_items").dataTable({
+		$("#list_drois_acces_articles").dataTable({
+			"order": [
+				[2, "desc"]
+			],
+			"language": {
+					"sProcessing": "Traitement en cours ...",
+					"sLengthMenu": "Afficher _MENU_ lignes",
+					"sZeroRecords": "Aucun résultat trouvé",
+					"sEmptyTable": "Aucune donnée disponible",
+					"sInfo": "Lignes _START_ à _END_ sur _TOTAL_",
+					"sInfoEmpty": "Aucune ligne affichée",
+					"sInfoFiltered": "(Filtrer un maximum de_MAX_)",
+					"sInfoPostFix": "",
+					"sSearch": "Chercher:",
+					"sUrl": "",
+					"sInfoThousands": ",",
+					"sLoadingRecords": "Chargement...",
+					"oPaginate": {
+						"sFirst": "<<", "sLast": ">>", "sNext": ">", "sPrevious": "<"
+					},
+					"oAria": {
+						"sSortAscending": ": Trier par ordre croissant", "sSortDescending": ": Trier par ordre décroissant"
+					}
+					}
+            });
+            
+            $("#list_drois_acces_evenements").dataTable({
 			"order": [
 				[2, "desc"]
 			],
@@ -213,19 +291,6 @@
 					}
 					}
 			});
-
-			$.fn.datepicker.dates['fr'] = {
-			days: ["Dimanche", "Lundi", "Mardi", "Mercredi", "Jeudi", "Vendredi", "Samedi"],
-			daysShort: ["Dim", "Lun", "Mar", "Mer", "Jeu", "Ven", "Sam"],
-			daysMin: ["Di", "Lu", "Ma", "Me", "Je", "Ve", "Sa"],
-			months: ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Aout", "Septembre", "Octobre", "Novembre", "Decembre"],
-			monthsShort: ["Jan", "Fév", "Mar", "Avr", "Mai", "Jui", "Jui", "Aou", "Sep", "Oct", "Nov", "Dec"],
-			today: "Aujourd'hui",
-			clear: "Vider",
-			format: "dd-mm-yyyy",
-			titleFormat: "MM yyyy", /* Leverages same syntax as 'format' */
-			weekStart: 0
-		};
 
 
 	</script>

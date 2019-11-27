@@ -45,6 +45,7 @@ Route::prefix('administration')->group(function () {
     Route::put('/droit_acces/evenement/{user}', 'administration\Droit_accesController@evenement_store')->name('evenement_droit_acces.store');
     Route::delete('/droit_acces/article/{user}/{categorie}', 'administration\Droit_accesController@article_destroy')->name('article_droit_acces.destroy');
     Route::delete('/droit_acces/evenement/{user}/{categorie}', 'administration\Droit_accesController@evenement_destroy')->name('evenement_droit_acces.destroy');
+    Route::put('/droit_acces/edition_media/{user}', 'administration\Droit_accesController@edition_media_store')->name('edition_media_droit_acces.store');
 
 
     // articles

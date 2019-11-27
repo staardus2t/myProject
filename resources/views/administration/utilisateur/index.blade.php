@@ -84,7 +84,7 @@
                             {{ $user->role }}
                         </td>
                         <td>
-                            {{ $user->statut }}
+                            <span class="m-badge m-badge--{{ $user->statut == 'Actif' ? 'success' : 'danger'}} m-badge--wide">{{ $user->statut }}</span>
                         </td>
                         <td>
                             {{ $user->created_at }}

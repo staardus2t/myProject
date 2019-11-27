@@ -118,6 +118,37 @@ class Droit_accesController extends Controller
 
     }
 
+    public function edition_media_store(Request $request,User $user){
+        
+        if ($request->isMethod('put')) {
+    
+            $edition = $request->input('ck_edition');
+            $image = $request->input('ck_image');
+            $video = $request->input('ck_video');
+
+            if($edition == null){
+                $user->edition = false;
+            }else{
+                $user->edition = true;
+            }
+
+            if($image == null){
+                $user->image = false;
+            }else{
+                $user->image = true;
+            }
+
+            if($video == null){
+                $user->video = false;
+            }else{
+                $user->video = true;
+            }
+
+            $user->update(); 
+            return redirect()->route('categorie_droit_acces.index',$user->id)->with('success', 'Enregistrement effectuée');
+        }
+    }
+
     
     public function article_destroy(User $user,Categorie $categorie)
     {

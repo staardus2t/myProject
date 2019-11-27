@@ -506,13 +506,13 @@
 						</li>
 						@endif
 
-
+						@if(Auth::user()->video == true || Auth::user()->image == true)
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Gallery</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>
 						</li>
 
-
+						
 						<li id="media" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 							<a href="javascript:;" class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-icon flaticon-suitcase"></i>
@@ -522,6 +522,7 @@
 							<div class="m-menu__submenu ">
 								<span class="m-menu__arrow"></span>
 								<ul class="m-menu__subnav">
+									@if(Auth::user()->image == true)
 									<li id="image" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 										<a href="javascript:;" class="m-menu__link m-menu__toggle">
 											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
@@ -547,6 +548,8 @@
 											</ul>
 										</div>
 									</li>
+									@endif
+									@if(Auth::user()->video == true)
 									<li id="video" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 										<a href="javascript:;" class="m-menu__link m-menu__toggle">
 											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
@@ -572,14 +575,19 @@
 											</ul>
 										</div>
 									</li>
+									@endif
 								</ul>
 							</div>
 						</li>
+						@endif
+						
+						@if(Auth::user()->edition == true)
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Revues</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>
 						</li>
 
+						
 						<li id="edition" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 							<a href="javascript:;" class="m-menu__link m-menu__toggle">
 								<i class="m-menu__link-icon flaticon-pie-chart"></i>
@@ -608,6 +616,7 @@
 							</div>
 
 						</li>
+						@endif
 						
 						{{-- ///////////////// Evénements ////////////////////// --}}
 						@php 
