@@ -22,6 +22,9 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->integer('role');
             $table->integer('statut');
+            $table->boolean('edition')->default(false);
+            $table->boolean('image')->default(false);
+            $table->boolean('video')->default(false);
             $table->rememberToken();
             $table->timestamps();
         });
