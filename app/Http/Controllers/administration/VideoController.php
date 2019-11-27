@@ -16,6 +16,7 @@ class VideoController extends Controller
         $this->middleware('auth');
         $this->middleware('statutUser');
         $this->middleware('ajoutArticle');
+        $this->middleware('accesVideo');
     }
 
     /**

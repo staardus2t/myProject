@@ -16,6 +16,7 @@ class EditionController extends Controller
         $this->middleware('auth');
         $this->middleware('statutUser');
         $this->middleware('ajoutArticle');
+        $this->middleware('accesEdition');
     }
     /**
      * Display a listing of the resource.

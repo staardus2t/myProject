@@ -506,7 +506,7 @@
 						</li>
 						@endif
 
-						@if(Auth::user()->video == true || Auth::user()->image == true)
+						@if((Auth::user()->video == true || Auth::user()->image == true) || Auth::user()->role == 'Administrateur')
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Gallery</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>
@@ -522,7 +522,7 @@
 							<div class="m-menu__submenu ">
 								<span class="m-menu__arrow"></span>
 								<ul class="m-menu__subnav">
-									@if(Auth::user()->image == true)
+									@if(Auth::user()->image == true || Auth::user()->role == 'Administrateur')
 									<li id="image" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 										<a href="javascript:;" class="m-menu__link m-menu__toggle">
 											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
@@ -549,7 +549,7 @@
 										</div>
 									</li>
 									@endif
-									@if(Auth::user()->video == true)
+									@if(Auth::user()->video == true || Auth::user()->role == 'Administrateur')
 									<li id="video" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
 										<a href="javascript:;" class="m-menu__link m-menu__toggle">
 											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
@@ -581,7 +581,7 @@
 						</li>
 						@endif
 						
-						@if(Auth::user()->edition == true)
+						@if(Auth::user()->edition == true || Auth::user()->role == 'Administrateur')
 						<li class="m-menu__section ">
 							<h4 class="m-menu__section-text">Revues</h4>
 							<i class="m-menu__section-icon flaticon-more-v2"></i>

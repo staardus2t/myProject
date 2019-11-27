@@ -65,6 +65,9 @@ class Kernel extends HttpKernel
         'checkAdministrateur' => \App\Http\Middleware\CheckAdministrateur::class,
         'ajoutArticle' => \App\Http\Middleware\AjoutArticle::class,
         'validerArticle' => \App\Http\Middleware\ValiderArticle::class,
+        'accesEdition' => \App\Http\Middleware\AccesEdition::class,
+        'accesImage' => \App\Http\Middleware\AccesImage::class,
+        'accesVideo' => \App\Http\Middleware\Accesvideo::class,
         
     ];
 

@@ -16,6 +16,7 @@ class ImageController extends Controller
         $this->middleware('auth');
         $this->middleware('statutUser');
         $this->middleware('ajoutArticle');
+        $this->middleware('accesImage');
     }
 
     /**
