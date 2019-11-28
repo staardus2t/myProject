@@ -13,9 +13,14 @@
                             <div class="row">
                                 <div class="col-lg-8 mx-auto">
                                     <div class="slider-heading">
-                                        <h2 class="slider__title">{{ $item->sliderable->titre }}
+                                        <h2 class="slider__title">
+                                            {{ $item->sliderable->titre }}
                                         </h2>
-                                        <a href="{{ route('site.article_show',$item->sliderable->slug) }}" class="theme-btn">تصفح المقال</a>
+                                        @if($item->sliderable_type == 'App\Article')
+                                            <a href="{{ route('site.article_show',$item->sliderable->slug) }}" class="theme-btn">تصفح المقال</a>
+                                        @elseif($item->sliderable_type == 'App\Evenement')
+                                            <a href="{{ route('site.evenement_show',$item->sliderable->slug) }}" class="theme-btn">تصفح النشاط</a>
+                                        @endif
                                     </div>
                                 </div>
                                 <!--end col-lg-8 -->
@@ -180,7 +185,7 @@
                         <div class="section-icon">
                             <!-- <img src="{{ asset('site_assets/images/section-icon.png')}}" alt="section-icon"> -->
                         </div>
-                        <h2 class="section__title">أخر المقالات</h2>
+                        <h2 class="section__title">آخر المقالات</h2>
 
                     </div><!-- end section-heading -->
                 </div><!-- end col-lg-8 -->
