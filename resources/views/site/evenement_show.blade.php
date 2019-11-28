@@ -23,19 +23,22 @@
                             <h3 class="event__title">معلومات عن النشاط</h3>
                             <ul class="event__list text-right">
                                 <li>
-                                    <span>التؤقيت:</span> 
+                                    <span>: التؤقيت</span> 
                                     {{ date('H:i',strtotime($evenement->date)) }}  
                                 </li>
                                 <li>
-                                    <span>التاريخ :</span>
+                                    <span> : التاريخ</span>
                                     {{ date('d-m-Y',strtotime($evenement->date)) }}
                                 </li>
                                 <li>
-                                    <span>الصنف :</span>
+                                    <span> : الصنف</span>
                                     {{ $evenement->categorie->nom }}
                                 </li>
-                                <li>{{ $evenement->site }} <span>الموقع:</span></li>
-                                <li> {{ $evenement->adresse}} <span>العنوان:</span></li>
+                                <li>{{ $evenement->site }} <span>: الموقع</span>
+                                    
+                                </li> <br>
+                                <li> {{ $evenement->adresse}} <span>: العنوان</span>
+                                </li>
                             </ul>
                         </div>
                     </div>

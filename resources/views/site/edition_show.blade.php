@@ -24,11 +24,11 @@
                             <ul class="event__list text-right">
                                 <li>
                                     {{ date('d-m-Y',strtotime($edition->date_publication)) }}
-                                    <span>تاريخ الاصدار</span>
+                                    <span>: تاريخ الاصدار</span>
                                 </li>
                                 <li>
                                     {{ $edition->auteur }}
-                                    <span>الكاتب:</span>
+                                    <span>: الكاتب</span>
                                 </li>
                             </ul>
                         </div>
