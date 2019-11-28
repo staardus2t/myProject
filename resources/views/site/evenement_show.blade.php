@@ -23,7 +23,7 @@
                             <h3 class="event__title">معلومات عن النشاط</h3>
                             <ul class="event__list text-right">
                                 <li>
-                                    <span>: التؤقيت</span> 
+                                    <span>: التوقيت</span> 
                                     {{ date('H:i',strtotime($evenement->date)) }}  
                                 </li>
                                 <li>
