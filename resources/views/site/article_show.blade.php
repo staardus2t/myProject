@@ -37,11 +37,11 @@
                             </div>
                             <div class="blog-inner-content ">
                                 <div class="inner-causes-box ml-auto">
-                                    <h3 class="blog__title ">
+                                    <h3 class="blog__title text-right ">
                                         {{ $article->titre }}
                                     </h3>
                                     <div class="row mt-3">
-                                        <div class="col-lg-2 col-sm-12 ml-auto">
+                                        <div class="col-lg-3 col-sm-12 ml-auto ">
                                             <ul class="blog__list ">
                                                 <li class="blog__dot-active ">{{ $article->auteur }}</li>
                                                 <li>
@@ -53,7 +53,7 @@
 
                                 </div>
                             </div>
-                            <div class="blog-inner-content-2 text-right">
+                            <div class="blog-inner-content-2 text-justify">
                                     {!! $article->contenu !!}
 
 
@@ -78,7 +78,7 @@
                                             <li>
                                                 @foreach($article->commentaire as $commentaire)
                                                 <div class="comment">
-                                                    <div class="comment-body">
+                                                    <div class="comment-body ml-auto">
                                                         <div class="meta-data">
                                                             <h4 class="comment__author">
 
