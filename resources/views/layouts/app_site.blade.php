@@ -48,7 +48,6 @@
                                 <ul class="top-action-list d-flex align-items-center">
                                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                                     <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                 </ul>
                             </div><!-- end info-box box-2 -->
@@ -95,8 +94,6 @@
 
                                         <li class="active"><a href="{{ route('site.about') }}">من نحن</a></li>
                                             <li class="active"><a href="{{ route('site.index') }}">الرئيسية</a></li>
-
-
                                         </ul>
                                     </nav><!-- end main-navigation -->
                                 </div><!-- end navigation-top -->
@@ -169,7 +166,6 @@
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                    <li><a href="#"><i class="fa fa-google-plus"></i></a></li>
                 </ul>
 
             </div><!-- end side-menu-wrap -->
@@ -228,7 +224,6 @@
                             <ul>
                                 <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                 <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                                 <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                             </ul>
                         </div>

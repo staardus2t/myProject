@@ -332,7 +332,7 @@
                 <div class="col-lg-12">
                     <div class="gallery-carousel">
                         @foreach($images as $image)
-                        <div class="gallery-item">
+                        <div  class="gallery-item">
                             <img src="{{ asset('storage/uploads/images/'.$image->image)}}" alt="">
                             <a href="{{ asset('storage/uploads/images/'.$image->image)}}" data-lightbox="roadtrip"
                                 data-title="{{ $image->nom }}"> <span class="gallery-icon"></span></a>
