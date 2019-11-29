@@ -2455,7 +2455,7 @@ a:hover {
     margin-right: 8px;
 }
 .causes-detail-area .blog-content-wrap .blog-content .blog-item .single-comment .comments-list .comment .comment-body .comment-content .comment__text {
-    padding-top: 36px;
+    padding-top: 12px;
     line-height: 30px;
 }
 .causes-detail-area .blog-content-wrap .blog-content .blog-item .single-comment .form-shared form .textarea {
@@ -2497,11 +2497,13 @@ a:hover {
     font-size: 18px;
 }
 .sidebar-shared .side-widget .widget__title {
-    font-size: 35px;
-    font-weight: 800;
-    margin-bottom: 25px;
-    border-bottom: 1px solid;
-    padding-bottom: 10px;
+        font-size: 35px;
+        font-weight: 800;
+        margin-bottom: 25px;
+        border-bottom: 1px solid;
+        padding-bottom: 10px;
+        font-family: 'boutros';
+        text-align: center;
 }
 .sidebar-shared .side-widget .author-box {
     display: -webkit-flex;
@@ -2984,6 +2986,7 @@ a:hover {
 .news-detail-area .blog-content-wrap .blog-content .blog-item .blog-inner-content .inner-causes-box .blog__title {
     font-size: 36px;
     margin-bottom: 13px;
+    font-family: 'boutros';
 }
 .news-detail-area .blog-content-wrap .blog-content .blog-item .blog-inner-content .inner-causes-box .blog__list li {
     display: inline-block;
@@ -3142,6 +3145,7 @@ a:hover {
     color: #424242;
     line-height: 28px;
     display: block;
+        font-family: 'boutros';
 }
 .news-detail-area .blog-content-wrap .sidebar-shared .side-widget .author-box .author__detail .author__title a:hover {
     color: #e36955;
