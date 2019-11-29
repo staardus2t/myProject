@@ -10,15 +10,16 @@
                                     <h2 class="widget__title">أخر المقالات</h2>
                                     @foreach($articles as $value)
                                     <div class="author-box recent-donate-item">
-                                        <div class="author__avatar">
-                                            <img src="{{asset('storage/uploads/images/'.$value->image)}}" alt="" style="width:80px">
-                                        </div>
-                                        <div class="author__detail">
+                                        
+                                        <div class="author__detail ml-auto">
                                             <h4 class="author__title author__title2">
                                             <a href="{{ route('site.article_show',$value->slug) }}"> 
                                                     {{ $value->titre }}
                                                 </a>
                                             </h4>
+                                        </div>
+                                        <div class="author__avatar">
+                                            <img src="{{asset('storage/uploads/images/'.$value->image)}}" alt="" style="width:80px">
                                         </div>
                                     </div><!-- end author-box -->
                                     @endforeach

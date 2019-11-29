@@ -2509,10 +2509,11 @@ a:hover {
     display: flex;
 }
 .sidebar-shared .side-widget .author-box .author__avatar {
-    margin-right: 20px;
-    width: 59px;
-    height: 59px;
-    /*background-color: #424242;*/
+        margin-left: 20px;
+        width: 59px;
+        height: 59px;
+        /* background-color: #424242; */
+        margin-right: 20px;
 }
 .sidebar-shared .side-widget .author-box .author__detail {
     margin-top: -10px;
