@@ -2738,7 +2738,8 @@ a:hover {
     text-transform: uppercase;
 }
 .upcoming-event-area .blog-content-wrap .blog-content .blog-item .blog-inner-content {
-    padding-top: 52px;
+        padding-top: 35px;
+        min-height: 290px;
 }
 .upcoming-event-area .blog-content-wrap .blog-content .blog-item .blog-inner-content .blog__title {
     margin-bottom: 0;
