@@ -76,14 +76,14 @@
                                         <h3 class="single__comment-title">التعليقات</h3>
                                         <ul class="comments-list">
                                             <li>
-                                                @foreach($article->commentaire as $commentaire)
+                                                @foreach($commentaires as $commentaire)
                                                 <div class="comment">
                                                     <div class="comment-body ml-auto">
                                                         <div class="meta-data">
                                                             <h4 class="comment__author">
 
                                                                 <span class="comment__date mr-3">{{ date('d-m-Y H:i',strtotime($commentaire->created_at)) }}</span>
-                                                                أحمد محمود
+                                                                {{ $commentaire->nom }}
                                                             </h4>
                                                         </div>
                                                         <div class="comment-content">
@@ -98,6 +98,7 @@
                                                 @endforeach
                                             </li>
                                         </ul>
+                                        {{ $commentaires->links() }}
                                     </div><!-- end comment__boxed -->
                                     <div class="comment__form form-shared">
                                         <h3 class="single__comment-title">أترك تعليق</h3>

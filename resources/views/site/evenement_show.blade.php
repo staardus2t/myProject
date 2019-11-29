@@ -37,7 +37,8 @@
                                 <li>{{ $evenement->site }} <span>: الموقع</span>
                                     
                                 </li> <br>
-                                <li> {{ $evenement->adresse}} <span>: العنوان</span>
+                                <li> 
+                                    {{ $evenement->adresse}} <span>: العنوان</span>
                                 </li>
                             </ul>
                         </div>

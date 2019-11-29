@@ -128,6 +128,9 @@
                                 <div class="dropdown-menu dropdown-menu-right" x-placement="bottom-end"
                                     style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(-32px, 27px, 0px);">
                                     @if(Auth::user()->role == 'Administrateur')
+                                        <a class="dropdown-item" href="{{route('article.show',$article->slug)}}" >
+                                            <i class="la la-eye"></i> &nbsp; Voir l'article
+                                        </a>
                                         <a class="dropdown-item" href="{{route('article.valider',$article->slug)}}" 
                                             onclick="return confirm('Confirmer cette action ?');">
                                             <i class="la la-edit"></i> &nbsp; {{ $article->valide ? 'Annuler validation' : 'Valider'}}

@@ -62,10 +62,11 @@ Route::prefix('administration')->group(function () {
 
     //commentaires
     Route::get('/commentaire/{article}', 'administration\CommentaireController@index')->name('commentaire.index');
+    Route::get('/voir_commentaire/{commentaire}', 'administration\CommentaireController@show')->name('commentaire.show');
     Route::delete('/commentaire/{commentaire}', 'administration\CommentaireController@destroy')->name('commentaire.destroy');
     // valider publier
-    Route::get('/valider/commentaire/{slug}','administration\CommentaireController@valider')->name('commentaire.valider')->middleware('validerArticle');
-    Route::get('/publier/commentaire/{slug}','administration\CommentaireController@publier')->name('commentaire.publier')->middleware('validerArticle');
+    Route::get('/valider/commentaire/{commentaire}','administration\CommentaireController@valider')->name('commentaire.valider')->middleware('validerArticle');
+    Route::get('/publier/commentaire/{commentaire}','administration\CommentaireController@publier')->name('commentaire.publier')->middleware('validerArticle');
     
     // evenements
     Route::resource('evenement', 'administration\EvenementController');

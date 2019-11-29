@@ -11,7 +11,7 @@ class EditionController extends Controller
         $data['editions'] = Edition::orderBy('created_at','DESC')
                             ->where('valide',true)
                             ->where('publish',true)                    
-                            ->paginate(9);
+                            ->paginate(6);
 
         return view('site.edition_all',$data);
     }
