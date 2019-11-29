@@ -551,35 +551,7 @@
 							</div>
 						</li>
 						@endif
-
-						<li class="m-menu__section ">
-							<h4 class="m-menu__section-text">Slider</h4>
-							<i class="m-menu__section-icon flaticon-more-v2"></i>
-						</li>
-
-
-						@if(Auth::user()->role == 'Administrateur')
-						<li id="slider" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-							<a href="javascript:;" class="m-menu__link m-menu__toggle">
-								<i class="m-menu__link-icon flaticon-user-ok"></i>
-								<span class="m-menu__link-text  menuu">Slider</span>
-								<i class="m-menu__ver-arrow la la-angle-right"></i>
-							</a>
-							<div class="m-menu__submenu ">
-								<span class="m-menu__arrow"></span>
-								<ul class="m-menu__subnav">
-									<li id="index_slider" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
-									<a href="{{ route('slider.index') }}" class="m-menu__link m-menu__toggle">
-											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
-											<span class="m-menu__link-text">Liste des slides</span>
-											<i class=""></i>
-										</a>
-									</li>
-								</ul>
-							</div>
-						</li>
-						@endif
-
+					
 						{{-- Categorie --}}
 						@if(Auth::user()->role == 'Administrateur')
 						<li id="categorie_evenement" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
@@ -601,6 +573,33 @@
 										<a href="{{ route('categorie_evenement.create') }}" class="m-menu__link ">
 											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
 											<span class="m-menu__link-text">Ajouter categories</span>
+										</a>
+									</li>
+								</ul>
+							</div>
+						</li>
+
+						<li class="m-menu__section ">
+							<h4 class="m-menu__section-text">Slider</h4>
+							<i class="m-menu__section-icon flaticon-more-v2"></i>
+						</li>
+
+
+						
+						<li id="slider" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+							<a href="javascript:;" class="m-menu__link m-menu__toggle">
+								<i class="m-menu__link-icon flaticon-user-ok"></i>
+								<span class="m-menu__link-text  menuu">Slider</span>
+								<i class="m-menu__ver-arrow la la-angle-right"></i>
+							</a>
+							<div class="m-menu__submenu ">
+								<span class="m-menu__arrow"></span>
+								<ul class="m-menu__subnav">
+									<li id="index_slider" class="m-menu__item  m-menu__item--submenu" aria-haspopup="true" m-menu-submenu-toggle="hover">
+									<a href="{{ route('slider.index') }}" class="m-menu__link m-menu__toggle">
+											<i class="m-menu__link-bullet m-menu__link-bullet--dot"><span></span></i>
+											<span class="m-menu__link-text">Liste des slides</span>
+											<i class=""></i>
 										</a>
 									</li>
 								</ul>
