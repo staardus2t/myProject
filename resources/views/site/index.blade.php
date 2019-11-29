@@ -416,7 +416,7 @@
                 <div class="col-lg-8 mx-auto">
                     <div class="section-heading blog-heading text-center">
 
-                        <h2 class="section__title">ملتقيات ومؤتمرات</h2>
+                        <h2 class="section__title">أنشطة</h2>
 
                     </div><!-- end section-heading -->
                 </div><!-- end col-lg-8 -->
