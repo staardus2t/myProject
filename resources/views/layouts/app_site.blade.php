@@ -230,35 +230,34 @@
                     </div><!-- end footer-item -->
 
                     <div class="col footer-item footer-item2">
-                        <h3 class="widget__title  text-right"> من نحن</h3>
+                        <a href="{{ route('site.about') }}"><h3 class="widget__title  text-right">من نحن</h3></a>
                         <ul class="foot__links text-right">
-                            <li><a href="#">حلق علمية</a></li>
-                            <li><a href="#">حوارات</a></li>
-                            <li><a href="#">إصدارات</a></li>
+                            <li><a href="{{ route('site.article_categorie','mJ1RmRJNWFOUjVKcUorV') }}">حوارات</a></li>
+                            <li><a href="{{ route('site.article_categorie','k1oTEJwdVpxSUFGZ1wvN') }}">حلق علمية</a></li>
+                            <li><a href="{{ route('site.edition_all') }}">إصدارات</a></li>
 
                         </ul>
                     </div><!-- end footer-item -->
+                    @php 
+                    $categorie_evenements = App\Categorie_evenement::where('valide',true)->where('publish',true)->get();
+
+                    $categorie_articles = App\Categorie::where('id','!=',17)->where('id','!=',18)->where('valide',true)->where('publish',true)->get()
+                    @endphp
+                   
                     <div class="col footer-item footer-item3">
                         <h3 class="widget__title text-right">وحدات لمع</h3>
                         <ul class="foot__links text-right">
-                            <li><a href="about.html">وحدة مقارنة الأديان</a></li>
-                            <li><a href="gallery.html">وحدة دراسة العقائد</a></li>
-                            <li><a href="volunteer.html">وحدة دراسة شرائع الأديان</a></li>
-                            <li><a href="team.html">وحدة الدراسات الصوفية</a></li>
-                            <li><a href="sponsor.html">وحدة التطرف والارهاب</a></li>
-                            <li><a href="about.html">وحدة علم الاجتماع الديني</a></li>
-                            <li><a href="gallery.html">وحدة علم النفس الديني</a></li>
-                            <li><a href="volunteer.html">وحدة الإعلام الديني</a></li>
-                            <li><a href="team.html">وحدة الدين والقانون</a></li>
-                            <li><a href="sponsor.html">وحدة التحقيق</a></li>
+                            @foreach($categorie_articles as $categorie_article)
+                            <li><a href="{{ route('site.article_categorie',$categorie_article->slug) }}">{{ $categorie_article->nom }}</a></li>
+                            @endforeach
                         </ul>
                     </div><!-- end footer-item -->
                     <div class="col footer-item footer-item3">
                         <h3 class="widget__title text-right">أنشطة</h3>
                         <ul class="foot__links text-right">
-                            <li><a href="causes.html">ملتقيات ومؤتمرات</a></li>
-                            <li><a href="causes-detail.html">مناقشة أطاريح جامعية</a></li>
-                            <li><a href="donate.html">دورات تدريبية</a></li>
+                            @foreach($categorie_evenements as $categorie_evenement)
+                            <li><a href="{{ route('site.evenement_categorie',$categorie_evenement->slug) }}">{{ $categorie_evenement->nom }}</a></li>
+                            @endforeach
                         </ul>
                     </div><!-- end footer-item -->
                     <div class="col footer-item footer-item1">

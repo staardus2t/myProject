@@ -78,11 +78,12 @@
                 <!--begin: Form Body -->
                 <div class="m-portlet__body" dir="rtl">
                     <div class="text-center">
-                        <img src="{{ asset('storage/uploads/images/'.$evenement->image) }}" alt="">
+                        <img style="width:600px" src="{{ asset('storage/uploads/images/'.$evenement->image) }}" alt="">
                     </div>
-                    <div class="text-right" dir="rtl">
+                    <div class="text-right mt-5" dir="rtl">
                         <h2>{{ $evenement->titre }}</h2>
-                        <p>{!! $evenement->contenu !!}</p>
+                        <span>{{ $article->auteur }}</span>
+                        <p style="width:70%">{!! $evenement->contenu !!}</p>
                     </div>
                     
                 </div>

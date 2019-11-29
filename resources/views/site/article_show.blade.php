@@ -40,13 +40,14 @@
                                     <h3 class="blog__title text-right ">
                                         {{ $article->titre }}
                                     </h3>
-                                    <div class="row mt-3">
-                                        <div class="col-lg-3 col-sm-12 ml-auto ">
-                                            <ul class="blog__list ">
-                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
+                                    <div class="row mt-3 text-right">
+                                        <div class="col-lg-12 col-sm-12 ml-auto ">
+                                            <ul class="blog__list float-right">
+                                                
                                                 <li>
                                                     <a href="#comments">تعليقات {{$article->commentaire->count()}}</a>
                                                 </li>
+                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
                                             </ul>
                                         </div>
                                     </div>
