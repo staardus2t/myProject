@@ -126,7 +126,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Slider article</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Liste des articles</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -170,7 +170,7 @@
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Slider événement</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Liste des événements</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -213,7 +213,7 @@
 <script>
 		$("#list_items").dataTable({
 			"order": [
-				[3, "desc"]
+				[3, "asc"]
 			],
 			"language": {
 					"sProcessing": "Traitement en cours ...",
