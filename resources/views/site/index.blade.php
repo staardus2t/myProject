@@ -40,7 +40,7 @@
     <!--================================
          START MAKE WORLD AREA
 =================================-->
-    <section class="make-world-area ">
+    <section dir="rtl" class="make-world-area ">
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 mx-auto">
@@ -78,6 +78,14 @@
             </div><!-- end row -->
             <div class="row world-static-wrap2">
 
+                
+                <div class="col-lg-5">
+                    <div class="world-content">
+                        <h3 class="world__title text-right">
+                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج <strong>أليايت,سيت </strong>
+                        </h3>
+                    </div>
+                </div><!-- end col-lg-5 -->
                 <div class="col-lg-7">
                     <div class="world-content">
                         <p class="world__desc text-right">
@@ -87,13 +95,6 @@
                         </p>
                     </div>
                 </div><!-- end col-lg-7 -->
-                <div class="col-lg-5">
-                    <div class="world-content">
-                        <h3 class="world__title text-right">
-                            لوريم ايبسوم دولار سيت أميت ,كونسيكتيتور أدايبا يسكينج <strong>أليايت,سيت </strong>
-                        </h3>
-                    </div>
-                </div><!-- end col-lg-5 -->
             </div>
         </div><!-- end container -->
     </section><!-- end give-area -->
@@ -236,10 +237,22 @@
     <!--================================
          START MIXER AREA
 =================================-->
-    <section class="mixer-area mixer-area3 mixer-area4">
+    <section dir="rtl" class="mixer-area mixer-area3 mixer-area4">
         <div class="container">
             @isset($video)
             <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-heading">
+                        <div class="section-icon">
+                            <!-- <img src="{{ asset('storage/uploads/images/'.$video->image)}}" alt="section-icon"> -->
+                        </div>
+                        <h2 class="section__title text__white text-right">{{ $video->titre }}</h2>
+                        <p class="section__desc text__white text-right">
+                            {{ $video->description }}
+                        </p>
+                
+                    </div><!-- end section-heading -->
+                </div><!-- end col-lg-6 -->
                 <div class="col-lg-6">
                     <div class="mixer-video-content">
                         <img src="{{ asset('storage/uploads/images/'.$video->image)}}" alt="">
@@ -247,18 +260,7 @@
                             title="Play Video"><i class="fa fa-play"></i></a>
                     </div><!-- end mixer-video-content -->
                 </div><!-- end col-lg-6 -->
-                <div class="col-lg-6">
-                    <div class="section-heading">
-                        <div class="section-icon">
-                            <!-- <img src="{{ asset('storage/uploads/images/'.$video->image)}}" alt="section-icon"> -->
-                        </div>
-                    <h2 class="section__title text__white text-right">{{ $video->titre }}</h2>
-                        <p class="section__desc text__white text-right">
-                            {{ $video->description }}
-                        </p>
-
-                    </div><!-- end section-heading -->
-                </div><!-- end col-lg-6 -->
+                
             </div><!-- end row -->
             @endisset
         </div><!-- end container -->
@@ -351,10 +353,28 @@
     <!-- ================================
     START PACKAGE AREA
 ================================= -->
-    <section class="package-area mb-5">
+    <section dir="rtl" class="package-area mb-5">
         <div class="container">
             <div class="row">
-
+                <div class="col-lg-5">
+                    <div class="section-heading">
+                
+                        <h2 class="section__title text-right">إصدارات</h2>
+                
+                        <div class="package-content">
+                            <!-- <div class="package__img">
+                                                <img src="{{ asset('site_assets/images/package-small-img.jpg')}}" alt="">
+                                                <img src="{{ asset('site_assets/images/package-small-img2.jpg')}}" alt="">
+                                            </div> -->
+                            <p class="package__desc">يُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال
+                                المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف
+                                بشكل عشوائي أخذتها من نص
+                            </p>
+                
+                            <a href="{{ route('site.edition_all') }}" class="theme-btn2 mt-5">جميع الاصدارات</a>
+                        </div>
+                    </div><!-- end section-heading -->
+                </div><!-- end col-lg-5 -->
                 <div class="col-lg-7">
                     <div class="row package-price-wrap">
                         @foreach($editions as $edition)
@@ -381,25 +401,7 @@
                         @endforeach
                     </div><!-- end row -->
                 </div><!-- end col-lg-7 -->
-                <div class="col-lg-5">
-                    <div class="section-heading">
-
-                        <h2 class="section__title text-right">إصدارات</h2>
-
-                        <div class="package-content">
-                            <!-- <div class="package__img">
-                                <img src="{{ asset('site_assets/images/package-small-img.jpg')}}" alt="">
-                                <img src="{{ asset('site_assets/images/package-small-img2.jpg')}}" alt="">
-                            </div> -->
-                            <p class="package__desc">يُستخدم في صناعات المطابع ودور النشر. كان لوريم إيبسوم ولايزال
-                                المعيار للنص الشكلي منذ القرن الخامس عشر عندما قامت مطبعة مجهولة برص مجموعة من الأحرف
-                                بشكل عشوائي أخذتها من نص
-                            </p>
-
-                            <a href="{{ route('site.edition_all') }}" class="theme-btn2 mt-5">جميع الاصدارات</a>
-                        </div>
-                    </div><!-- end section-heading -->
-                </div><!-- end col-lg-5 -->
+                
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end package-area -->

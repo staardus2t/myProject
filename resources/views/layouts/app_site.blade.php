@@ -121,20 +121,28 @@
             </div><!-- end humburger-menu -->
             <div class="side-menu-wrap text-right">
                 <ul class="side-menu-ul">
-                    <li class="sidenav__item"><a href="index.html">home</a>
+                    <li class="sidenav__item"><a href="{{ route('site.index') }}">الرئيسية</a></li>
+                    <li class="sidenav__item"><a href="{{ route('site.about') }}">من نحن</a></li>
+                    
+                    {{-- <li class="sidenav__item"><a href="index.html">home</a>
                         <span class="menu-plus-icon"></span>
                         <ul class="side-sub-menu">
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="index2.html">Home 2</a></li>
                         </ul>
-                    </li>
-                    <li class="sidenav__item"><a href="#">causes</a>
+                    </li> --}}
+                    <li class="sidenav__item"><a href="#">وحدات لمع</a>
                         <span class="menu-plus-icon"></span>
                         <ul class="side-sub-menu">
+                            @foreach($categorie_articles as $categorie)
+                            <li><a href="{{ route('site.article_categorie',$categorie->slug) }}">{{ $categorie->nom }}</a></li>
+                            @endforeach
+                        </ul>
+                        {{-- <ul class="side-sub-menu">
                             <li><a href="causes.html">causes</a></li>
                             <li><a href="causes-detail.html">causes detail</a></li>
                             <li><a href="donate.html">donate now</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
                     <li class="sidenav__item"><a href="#">event</a>
                         <span class="menu-plus-icon"></span>
