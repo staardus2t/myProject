@@ -4,6 +4,7 @@ namespace App\Http\Controllers\site;
 
 use App\Article;
 use App\Categorie;
+use App\Commentaire;
 use App\Http\Controllers\Controller;
 
 class ArticleController extends Controller
@@ -12,7 +13,7 @@ class ArticleController extends Controller
         $data['articles'] = Article::orderBy('created_at','DESC')
             ->where('valide',true)
             ->where('publish',true)
-            ->paginate(9);
+            ->paginate(6);
 
         return view('site.article_all',$data);
     }
@@ -30,7 +31,7 @@ class ArticleController extends Controller
         $data['articles'] = Article::where('categorie_id',$categorie->id)
                             ->where('valide',true)
                             ->where('publish',true)
-                            ->paginate(9);
+                            ->paginate(6);
 
         return view('site.article_categorie',$data);
     }
@@ -49,8 +50,12 @@ class ArticleController extends Controller
                             ->where('publish',true)
                             ->where('id','!=',$article->id)->orderBy('created_at','DESC')->take(3)->get();
         $data['article'] = $article;
-        
 
+        $data['commentaires'] = Commentaire::where('article_id',$article->id)
+                            ->where('valide',true)
+                            ->where('publish',true)
+                            ->paginate(10);
+        
         return view('site.article_show',$data);
     }
 }

@@ -13,7 +13,7 @@ class EvenementController extends Controller
         $data['evenements'] = Evenement::orderBy('created_at','DESC')
                                 ->where('valide',true)
                                 ->where('publish',true)
-                                ->paginate(9);
+                                ->paginate(6);
 
         return view('site.evenement_all',$data);
     }
@@ -31,7 +31,7 @@ class EvenementController extends Controller
         $data['evenements'] = Evenement::where('categorie_id',$categorie->id)
                                 ->where('valide',true)
                                 ->where('publish',true)
-                                ->paginate(9);
+                                ->paginate(6);
 
         return view('site.evenement_categorie',$data);
     }

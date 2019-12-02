@@ -442,7 +442,7 @@
                                     </a>
                                 </h3>
                                 <ul class="blog__list text-right">
-                                <li class="blog__dot-active">{{ date('d-m-Y H:i',strtotime($event->date)) }}</li>
+                                    <li class="blog__dot-active">{{ date('d-m-Y H:i',strtotime($event->date)) }}</li>
                                     <li>{{ $event->lieu }}</li>
                                 </ul>
                             </div>

@@ -62,10 +62,11 @@ Route::prefix('administration')->group(function () {
 
     //commentaires
     Route::get('/commentaire/{article}', 'administration\CommentaireController@index')->name('commentaire.index');
+    Route::get('/voir_commentaire/{commentaire}', 'administration\CommentaireController@show')->name('commentaire.show');
     Route::delete('/commentaire/{commentaire}', 'administration\CommentaireController@destroy')->name('commentaire.destroy');
     // valider publier
-    Route::get('/valider/commentaire/{slug}','administration\CommentaireController@valider')->name('commentaire.valider')->middleware('validerArticle');
-    Route::get('/publier/commentaire/{slug}','administration\CommentaireController@publier')->name('commentaire.publier')->middleware('validerArticle');
+    Route::get('/valider/commentaire/{commentaire}','administration\CommentaireController@valider')->name('commentaire.valider')->middleware('validerArticle');
+    Route::get('/publier/commentaire/{commentaire}','administration\CommentaireController@publier')->name('commentaire.publier')->middleware('validerArticle');
     
     // evenements
     Route::resource('evenement', 'administration\EvenementController');
@@ -101,6 +102,14 @@ Route::prefix('administration')->group(function () {
     Route::get('/valider/image/{image}','administration\ImageController@valider')->name('image.valider')->middleware('validerArticle');
     Route::get('/publier/image/{image}','administration\ImageController@publier')->name('image.publier')->middleware('validerArticle');
     
+
+    // Slider
+
+    Route::get('/slider', 'administration\SliderController@index')->name('slider.index');
+    Route::delete('/slider/{slider}', 'administration\SliderController@destroy')->name('slider.destroy');
+    Route::post('/slider_article', 'administration\SliderController@slider_article')->name('slider.article');
+    Route::post('/slider_evenement', 'administration\SliderController@slider_evenement')->name('slider.evenement');
+
     // Erreur user
     Route::get('/erreur', function () {
         return view('administration.utilisateur.user_error');

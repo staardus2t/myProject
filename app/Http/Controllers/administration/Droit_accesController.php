@@ -51,7 +51,19 @@ class Droit_accesController extends Controller
      */
     public function article_create(User $user)
     {
-        $data['article_categories'] = Categorie::all();
+        // Evenement
+        $categorie_droit_acces = Categorie::select('categories.*','categorie_droit_acces.*')
+                                ->join('categorie_droit_acces','categorie_droit_acces.categorie_id','categories.id')
+                                ->where('categorie_droit_acces.user_id',$user->id)
+                                ->get();
+        $T_categories = array();
+        for($i=0;$i < $categorie_droit_acces->count(); $i++){
+            $T_categories[] = $categorie_droit_acces[$i]->categorie_id;
+        }
+
+        // dd($T_categories);
+       
+        $data['article_categories'] = Categorie::whereNotIn('id',$T_categories)->get();
 
         $data['user'] = $user;
         return view('administration.categorie_droit_acces.article_create',$data);

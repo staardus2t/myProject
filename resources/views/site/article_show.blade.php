@@ -17,13 +17,14 @@
                                     <h3 class="blog__title text-right ">
                                         {{ $article->titre }}
                                     </h3>
-                                    <div class="row mt-3">
-                                        <div class="col-lg-3 col-sm-12 ml-auto ">
-                                            <ul class="blog__list ">
-                                                <li class="blog__dot-active ml-3 ">{{ $article->auteur }}</li>
+                                    <div class="row mt-3 text-right">
+                                        <div class="col-lg-12 col-sm-12 ml-auto ">
+                                            <ul class="blog__list float-right">
+                                                
                                                 <li>
                                                     <a href="#comments">تعليقات {{$article->commentaire->count()}}</a>
                                                 </li>
+                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
                                             </ul>
                                         </div>
                                     </div>
@@ -52,14 +53,14 @@
                                         <h3 class="single__comment-title">التعليقات</h3>
                                         <ul class="comments-list">
                                             <li>
-                                                @foreach($article->commentaire as $commentaire)
+                                                @foreach($commentaires as $commentaire)
                                                 <div class="comment">
                                                     <div class="comment-body ml-auto">
                                                         <div class="meta-data">
                                                             <h4 class="comment__author">
-                                                                أحمد محمود
+
                                                                 <span class="comment__date mr-3">{{ date('d-m-Y H:i',strtotime($commentaire->created_at)) }}</span>
-                                                               
+                                                                {{ $commentaire->nom }}
                                                             </h4>
                                                         </div>
                                                         <div class="comment-content">
@@ -74,6 +75,7 @@
                                                 @endforeach
                                             </li>
                                         </ul>
+                                        {{ $commentaires->links() }}
                                     </div><!-- end comment__boxed -->
                                     <div class="comment__form form-shared">
                                         <h3 class="single__comment-title">أترك تعليق</h3>

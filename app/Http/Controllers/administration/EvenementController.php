@@ -146,9 +146,16 @@ class EvenementController extends Controller
      * @param  \App\Evenement  $evenement
      * @return \Illuminate\Http\Response
      */
-    public function show(Evenement $evenement)
+    public function show($slug)
     {
-        //
+        $evenement = Evenement::where('slug',$slug)->first();
+        if (!$evenement) {
+            return redirect('404');
+        }
+
+        $data['evenement'] = $evenement;
+
+        return view('administration.evenements.evenement.show',$data);
     }
 
     /**
