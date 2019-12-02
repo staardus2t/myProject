@@ -1,33 +1,10 @@
 @extends('layouts.app_site')
 @section('content')
-<section class="causes-detail-area news-detail-area">
+<section dir="rtl" class="causes-detail-area news-detail-area">
         <div class="container">
             <div class="row blog-content-wrap">
 
-                <div class="col-lg-4">
-                        <div class="sidebar-shared">
-                                <div class="side-widget text-right ">
-                                    <h2 class="widget__title">أخر المقالات</h2>
-                                    @foreach($articles as $value)
-                                    <div class="author-box recent-donate-item">
-                                        
-                                        <div class="author__detail ml-auto">
-                                            <h4 class="author__title author__title2">
-                                            <a href="{{ route('site.article_show',$value->slug) }}"> 
-                                                    {{ $value->titre }}
-                                                </a>
-                                            </h4>
-                                        </div>
-                                        <div class="author__avatar">
-                                            <img src="{{asset('storage/uploads/images/'.$value->image)}}" alt="" style="width:80px">
-                                        </div>
-                                    </div><!-- end author-box -->
-                                    @endforeach
-                                </div><!-- end side-widget -->
-        
-        
-                            </div><!-- end sidebar-shared -->
-                </div><!-- end col-lg-4 -->
+                
                 <div class="col-lg-8">
                     <div class="blog-content">
                         <div class="blog-item">
@@ -43,11 +20,11 @@
                                     <div class="row mt-3 text-right">
                                         <div class="col-lg-12 col-sm-12 ml-auto ">
                                             <ul class="blog__list float-right">
-                                                
+                                                <li class="blog__dot-active ml-3">{{ $article->auteur }}</li>
                                                 <li>
                                                     <a href="#comments">تعليقات {{$article->commentaire->count()}}</a>
                                                 </li>
-                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
@@ -66,7 +43,6 @@
                                         <ul class="news-share">
                                             <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                                             <li><a href="#"><i class="fa fa-facebook"></i></a></li>
-                                            <li><a href="#"><i class="fa fa-pinterest"></i></a></li>
                                             <li><a href="#"><i class="fa fa-instagram"></i></a></li>
                                         </ul>
                                     </div>
@@ -135,6 +111,28 @@
                         </div><!-- end blog-item -->
                     </div><!-- end blog-content -->
                 </div><!-- end col-lg-8 -->
+                <div class="col-lg-4">
+                    <div class="sidebar-shared">
+                        <div class="side-widget text-right ">
+                            <h2 class="widget__title">أخر المقالات</h2>
+                            @foreach($articles as $value)
+                            <div class="author-box recent-donate-item">
+                
+                                <div class="author__detail ml-auto">
+                                    <h4 class="author__title author__title2">
+                                        <a href="{{ route('site.article_show',$value->slug) }}">
+                                            {{ $value->titre }}
+                                        </a>
+                                    </h4>
+                                </div>
+                                <div class="author__avatar">
+                                    <img src="{{asset('storage/uploads/images/'.$value->image)}}" alt="" style="width:80px">
+                                </div>
+                            </div><!-- end author-box -->
+                            @endforeach
+                        </div><!-- end side-widget -->
+                    </div><!-- end sidebar-shared -->
+                </div><!-- end col-lg-4 -->
             </div><!-- end row -->
         </div><!-- end container -->
     </section><!-- end causes-area -->

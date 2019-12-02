@@ -636,14 +636,14 @@ a:hover {
 
 /*==== mobile menu ===*/
 .header-area .side-nav-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 320px;
-    height: 100%;
-    background-color: #232323;
-    overflow-x: hidden;
-    z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #232323fa;
+  overflow-x: hidden;
+  z-index: 999999999999;
     -webkit-transition: all 0.4s cubic-bezier(0.7, 0, 0.2, 1);
     -moz-transition: all 0.4s cubic-bezier(0.7, 0, 0.2, 1);
     -ms-transition: all 0.4s cubic-bezier(0.7, 0, 0.2, 1);
@@ -738,7 +738,7 @@ a:hover {
     display: block;
     text-transform: capitalize;
     font-weight: 500;
-    padding: 10px 20px;
+    padding: 10px 50px;
     -webkit-transition: all 0.3s;
     -moz-transition: all 0.3s;
     -ms-transition: all 0.3s;
@@ -3088,7 +3088,7 @@ a:hover {
     margin-right: 18px;
 }
 .news-detail-area .blog-content-wrap .blog-content .blog-item .blog-inner-content-2 .news-tag-item-right .news-share li:last-child {
-    margin-right: 0;
+    margin-right: 18px;
 }
 .news-detail-area .blog-content-wrap .blog-content .blog-item .blog-inner-content-2 .news-tag-item-right .news-share li a {
     font-size: 14px;

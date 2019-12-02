@@ -56,10 +56,18 @@
                 </div><!-- end row -->
             </div><!-- end container -->
         </div><!-- end header-top-action -->
-        <div class="header-top header-menu-action">
+        <div dir="rtl" class="header-top header-menu-action">
             <div class="container">
                 <div class="row ostion-top-wrap">
-
+                    <div class="col-lg-5 col-sm-5 site-branding">
+                        <div class="logo-action d-flex align-items-center">
+                            <div class="ostion-logo ml-auto">
+                                <a href="{{ route('site.index') }}">
+                                    <img style="height: 105px;" src="{{ asset('site_assets/images/logo2.png')}} " alt="Lomaa" title="Lomaa">
+                                </a>
+                            </div><!-- .ostion-logo -->
+                        </div><!-- end logo-action -->
+                    </div><!-- site-branding -->
                     <div class="col-lg-7 col-sm-7 ostion-menu">
                         <div class="ostion-menu-innner">
                             <div class="ostion-menu-content">
@@ -71,29 +79,37 @@
                                                 $categorie_articles = App\Categorie::where('id','!=',17)->where('id','!=',18)->where('valide',true)->where('publish',true)->get()
                                             @endphp
                                         <ul>
-                                        <li><a href="{{ route('site.edition_all') }}">إصدارات</a></li>
-                                        @if($categorie_evenements->count() > 0)
-                                            <li>
-                                                <a href="#">أنشطة</a>
-                                                <ul class="dropdown-menu-item dropdown-menu-right text-right">
-                                                @foreach($categorie_evenements as $categorie_evenement)
-                                                    <li><a href="{{ route('site.evenement_categorie',$categorie_evenement->slug) }}">{{ $categorie_evenement->nom }}</a></li>
-                                                @endforeach
-                                                </ul>
-                                            </li>
-                                            @endif
-                                            <li><a href="{{ route('site.article_categorie','mJ1RmRJNWFOUjVKcUorV') }}">حوارات</a></li>
-                                            <li><a href="{{ route('site.article_categorie','k1oTEJwdVpxSUFGZ1wvN') }}">حلق علمية</a></li>
-                                            <li><a href="#">وحدات لمع</a>
-                                                <ul class="dropdown-menu-item dropdown-menu-right text-right">
-                                                    @foreach($categorie_articles as $categorie)
-                                                        <li><a href="{{ route('site.article_categorie',$categorie->slug) }}">{{ $categorie->nom }}</a></li>
-                                                    @endforeach
-                                                </ul>
-                                            </li>
-
+                                        <li class="active"><a href="{{ route('site.index') }}">الرئيسية</a></li>
                                         <li class="active"><a href="{{ route('site.about') }}">من نحن</a></li>
-                                            <li class="active"><a href="{{ route('site.index') }}">الرئيسية</a></li>
+                                        <li><a href="#">وحدات لمع</a>
+                                            <ul class="dropdown-menu-item dropdown-menu-right text-right">
+                                                @foreach($categorie_articles as $categorie)
+                                                <li><a href="{{ route('site.article_categorie',$categorie->slug) }}">{{ $categorie->nom }}</a></li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        <li><a href="{{ route('site.article_categorie','k1oTEJwdVpxSUFGZ1wvN') }}">حلق علمية</a></li>
+                                        <li><a href="{{ route('site.article_categorie','mJ1RmRJNWFOUjVKcUorV') }}">حوارات</a></li>
+                                        @if($categorie_evenements->count() > 0)
+                                        <li>
+                                            <a href="#">أنشطة</a>
+                                            <ul class="dropdown-menu-item dropdown-menu-right text-right">
+                                                @foreach($categorie_evenements as $categorie_evenement)
+                                                <li><a
+                                                        href="{{ route('site.evenement_categorie',$categorie_evenement->slug) }}">{{ $categorie_evenement->nom }}</a>
+                                                </li>
+                                                @endforeach
+                                            </ul>
+                                        </li>
+                                        @endif
+                                        <li><a href="{{ route('site.edition_all') }}">إصدارات</a></li>
+                                        
+                                            
+                                            
+                                            
+
+                                        
+                                        
                                         </ul>
                                     </nav><!-- end main-navigation -->
                                 </div><!-- end navigation-top -->
@@ -103,15 +119,7 @@
                             </div>
                         </div><!-- end ostion-menu-innner -->
                     </div><!-- ostion-menu -->
-                    <div class="col-lg-5 col-sm-5 site-branding">
-                        <div class="logo-action d-flex align-items-center">
-                            <div class="ostion-logo ml-auto">
-                                <a href="{{ route('site.index') }}">
-                                    <img style="height: 105px;" src="{{ asset('site_assets/images/logo2.png')}} " alt="Lomaa" title="Lomaa">
-                                </a>
-                            </div><!-- .ostion-logo -->
-                        </div><!-- end logo-action -->
-                    </div><!-- site-branding -->
+                    
                 </div><!-- end row -->
             </div><!-- end container -->
         </div><!-- end header-top -->
@@ -121,52 +129,52 @@
             </div><!-- end humburger-menu -->
             <div class="side-menu-wrap text-right">
                 <ul class="side-menu-ul">
-                    <li class="sidenav__item"><a href="index.html">home</a>
+                    <li class="sidenav__item"><a href="{{ route('site.index') }}">الرئيسية</a></li>
+                    <li class="sidenav__item"><a href="{{ route('site.about') }}">من نحن</a></li>
+                    
+                    {{-- <li class="sidenav__item"><a href="index.html">home</a>
                         <span class="menu-plus-icon"></span>
                         <ul class="side-sub-menu">
                             <li><a href="index.html">Home 1</a></li>
                             <li><a href="index2.html">Home 2</a></li>
                         </ul>
-                    </li>
-                    <li class="sidenav__item"><a href="#">causes</a>
+                    </li> --}}
+                    <li class="sidenav__item"><a href="#">وحدات لمع</a>
                         <span class="menu-plus-icon"></span>
                         <ul class="side-sub-menu">
+                            @foreach($categorie_articles as $categorie)
+                            <li><a href="{{ route('site.article_categorie',$categorie->slug) }}">{{ $categorie->nom }}</a></li>
+                            @endforeach
+                        </ul>
+                        {{-- <ul class="side-sub-menu">
                             <li><a href="causes.html">causes</a></li>
                             <li><a href="causes-detail.html">causes detail</a></li>
                             <li><a href="donate.html">donate now</a></li>
-                        </ul>
+                        </ul> --}}
                     </li>
-                    <li class="sidenav__item"><a href="#">event</a>
+                    <li class="sidenav__item"><a href="{{ route('site.article_categorie','mJ1RmRJNWFOUjVKcUorV') }}">حوارات</a></li>
+                    <li class="sidenav__item"><a href="{{ route('site.article_categorie','k1oTEJwdVpxSUFGZ1wvN') }}">حلق علمية</a></li>
+                    @if($categorie_evenements->count() > 0)
+                    <li class="sidenav__item">
+                        <a href="#">أنشطة</a>
                         <span class="menu-plus-icon"></span>
                         <ul class="side-sub-menu">
-                            <li><a href="events.html">events</a></li>
-                            <li><a href="events-detail.html">events detail</a></li>
+                            @foreach($categorie_evenements as $categorie_evenement)
+                            <li><a
+                                    href="{{ route('site.evenement_categorie',$categorie_evenement->slug) }}">{{ $categorie_evenement->nom }}</a>
+                            </li>
+                            @endforeach
                         </ul>
                     </li>
-                    <li class="sidenav__item"><a href="#">news</a>
-                        <span class="menu-plus-icon"></span>
-                        <ul class="side-sub-menu">
-                            <li><a href="news.html">news</a></li>
-                            <li><a href="single-news.html">single news</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidenav__item"><a href="#">pages</a>
-                        <span class="menu-plus-icon"></span>
-                        <ul class="side-sub-menu">
-                            <li><a href="about.html">about</a></li>
-                            <li><a href="gallery.html">gallery</a></li>
-                            <li><a href="volunteer.html">become a volunteer</a></li>
-                            <li><a href="team.html">out team</a></li>
-                            <li><a href="sponsor.html">sponsors</a></li>
-                        </ul>
-                    </li>
-                    <li class="sidenav__item"><a href="contact.html">contact</a></li>
+                    @endif
+                    <li class="sidenav__item"><a href="{{ route('site.edition_all') }}">إصدارات</a></li>
+                    
                 </ul>
-                <ul class="side-social">
+                {{-- <ul class="side-social">
                     <li><a href="#"><i class="fa fa-facebook"></i></a></li>
                     <li><a href="#"><i class="fa fa-twitter"></i></a></li>
                     <li><a href="#"><i class="fa fa-youtube-play"></i></a></li>
-                </ul>
+                </ul> --}}
 
             </div><!-- end side-menu-wrap -->
         </div><!-- end side-nav-container -->
