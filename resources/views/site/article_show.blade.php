@@ -20,11 +20,11 @@
                                     <div class="row mt-3 text-right">
                                         <div class="col-lg-12 col-sm-12 ml-auto ">
                                             <ul class="blog__list float-right">
-                                                
+                                                <li class="blog__dot-active ml-3">{{ $article->auteur }}</li>
                                                 <li>
                                                     <a href="#comments">تعليقات {{$article->commentaire->count()}}</a>
                                                 </li>
-                                                <li class="blog__dot-active ">{{ $article->auteur }}</li>
+                                                
                                             </ul>
                                         </div>
                                     </div>
