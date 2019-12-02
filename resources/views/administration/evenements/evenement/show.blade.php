@@ -61,6 +61,9 @@
                                     <i class="la la-edit"></i> &nbsp; {{ $evenement->publish ? 'Annuler publication' : 'Publier'}}
                                 </a>
                                 @endif
+                            <a class="dropdown-item" href="{{route('evenement.edit',$evenement->slug)}}">
+                                <i class="la la-edit"></i> &nbsp; Modifier
+                            </a>
                             <form action="{{ route('evenement.destroy', $evenement->slug)}}" method="POST" id="formDelete">
                                 @csrf
                                 @method('DELETE')
@@ -82,7 +85,7 @@
                     </div>
                     <div class="text-right mt-5" dir="rtl">
                         <h2>{{ $evenement->titre }}</h2>
-                        <span>{{ $article->auteur }}</span>
+                        <span>{{ $evenement->auteur }}</span>
                         <p style="width:70%">{!! $evenement->contenu !!}</p>
                     </div>
                     

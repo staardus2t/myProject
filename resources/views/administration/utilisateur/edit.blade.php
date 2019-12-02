@@ -123,7 +123,7 @@
                                             <label class="col-form-label col-lg-3 col-sm-12"></label>
                                             <div class="col-lg-4 col-md-9 col-sm-12">
                                                 <label class="m-checkbox">
-                                                    <input type="checkbox" {{ $utilisateur->statut == 'Actif' ? 'checked' : ''}} name="statut">Actif / inactif
+                                                    <input type="checkbox" {{ $utilisateur->statut == 'Actif' ? 'checked' : ''}} name="statut">Actif
                                                     <span></span>
                                                 </label>
                                             </div>

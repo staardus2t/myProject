@@ -110,6 +110,9 @@ class ImageController extends Controller
      */
     public function edit(Image $image)
     {
+        if(Auth::user()->role != 'Administrateur' && $image->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         $data['image'] = $image;        
 
         return view('administration.image.edit', $data);
@@ -145,6 +148,9 @@ class ImageController extends Controller
      */
     public function destroy(Image $image)
     {
+        if(Auth::user()->role != 'Administrateur' && $image->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         $image->delete();
 
         return redirect()->route('image.index')->with('success', 'Suppression effectuée');

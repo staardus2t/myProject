@@ -61,6 +61,9 @@
                                     <i class="la la-edit"></i> &nbsp; {{ $article->publish ? 'Annuler publication' : 'Publier'}}
                                 </a>
                                 @endif
+                            <a class="dropdown-item" href="{{route('article.edit',$article->slug)}}">
+                                <i class="la la-edit"></i> &nbsp; Modifier
+                            </a>
                             <form action="{{ route('article.destroy', $article->slug)}}" method="POST" id="formDelete">
                                 @csrf
                                 @method('DELETE')

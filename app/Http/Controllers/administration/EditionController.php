@@ -124,6 +124,10 @@ class EditionController extends Controller
             return redirect('404');
         }
 
+        if(Auth::user()->role != 'Administrateur' && $edition->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
+
         $data['edition'] = $edition;        
 
         return view('administration.edition.edit', $data);
@@ -205,6 +209,10 @@ class EditionController extends Controller
         if (!$edition) {
             return redirect('404');
         }
+
+        if(Auth::user()->role != 'Administrateur' && $edition->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         
         $edition->delete();
 
@@ -217,6 +225,11 @@ class EditionController extends Controller
          if(!$edition){
             return redirect('404');
         }
+
+        if(Auth::user()->role != 'Administrateur' && $edition->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
+
         Storage::delete('uploads/images/'.$edition->image);
         $edition->image = null;
         $edition->update();

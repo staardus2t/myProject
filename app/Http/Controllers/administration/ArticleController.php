@@ -152,6 +152,9 @@ class ArticleController extends Controller
      */
     public function show($slug)
     {
+        if(Auth::user()->role != 'Administrateur'){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         $article = Article::where('slug',$slug)->first();
         if (!$article) {
             return redirect('404');
@@ -171,9 +174,16 @@ class ArticleController extends Controller
     public function edit($slug)
     {
         $user = Auth::user();
+
+        
+
         $article = Article::where('slug',$slug)->first();
         if (!$article) {
             return redirect('404');
+        }
+
+        if($user->role != 'Administrateur' && $article->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
         }
 
         $data['article'] = $article;
@@ -302,6 +312,10 @@ class ArticleController extends Controller
         if (!$article) {
             return redirect('404');
         }
+
+        if(Auth::user()->role != 'Administrateur' && $article->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         
         $article->delete();
         $article->slider()->delete();
@@ -314,6 +328,11 @@ class ArticleController extends Controller
          if(!$article){
             return redirect('404');
         }
+
+        if(Auth::user()->role != 'Administrateur' && $article->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
+        
         Storage::delete('uploads/images/'.$article->image);
         $article->image = null;
         $article->update();
@@ -325,6 +344,10 @@ class ArticleController extends Controller
         $article = Article::where('slug',$slug)->first();
          if(!$article){
             return redirect('404');
+        }
+        
+        if(Auth::user()->role != 'Administrateur' && $article->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
         }
         Storage::delete('uploads/fichiers/'.$article->fichier);
         $article->fichier = null;

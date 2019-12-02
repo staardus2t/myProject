@@ -79,6 +79,11 @@ class UtilisateurController extends Controller
             }else{
                 $user->statut = 1;
             }
+
+            $user->edition = false;
+            $user->image = false;
+            $user->video = false;
+            
             $user->save(); 
             return redirect()->route('utilisateur.index')->with('success', 'Enregistrement effectué');
         }

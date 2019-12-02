@@ -148,6 +148,9 @@ class EvenementController extends Controller
      */
     public function show($slug)
     {
+        if(Auth::user()->role != 'Administrateur' && $evenement->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         $evenement = Evenement::where('slug',$slug)->first();
         if (!$evenement) {
             return redirect('404');
@@ -170,6 +173,10 @@ class EvenementController extends Controller
         $evenement = Evenement::where('slug',$slug)->first();
         if (!$evenement) {
             return redirect('404');
+        }
+
+        if($user()->role != 'Administrateur' && $evenement->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
         }
 
         $data['evenement'] = $evenement;
@@ -288,6 +295,10 @@ class EvenementController extends Controller
         if (!$evenement) {
             return redirect('404');
         }
+
+        if($user()->role != 'Administrateur' && $evenement->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
         
         $evenement->delete();
         $evenement->slider()->delete();
@@ -301,6 +312,11 @@ class EvenementController extends Controller
          if(!$evenement){
             return redirect('404');
         }
+
+        if($user()->role != 'Administrateur' && $evenement->valide){
+            return redirect()->route('utilisateur.user_error')->with('error','Vous ne disposez pas des autorisations nécessaires pour effectuer cette action');
+        }
+        
         Storage::delete('uploads/images/'.$evenement->image);
         $evenement->image = null;
         $evenement->update();

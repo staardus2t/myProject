@@ -25,10 +25,6 @@ class Droit_accesController extends Controller
      */
     public function index(User $user)
     {
-        $data['article_categories'] = Categorie::all();
-        $data['evenement_categories'] = Categorie_evenement::all();
-        $data['user'] = $user;
-        
         $data['droit_acces_articles'] = $user->select('categorie_droit_acces.*','categories.*','categorie_droit_acces.created_at as date_creation','categorie_droit_acces.updated_at as date_modification')
             ->join('categorie_droit_acces', 'categorie_droit_acces.user_id', '=', 'users.id')
             ->join('categories', 'categories.id', '=', 'categorie_droit_acces.categorie_id')
@@ -38,9 +34,11 @@ class Droit_accesController extends Controller
         $data['droit_acces_evenements'] = $user->select('categorie_evenement_droit_acces.*','categorie_evenements.*','categorie_evenement_droit_acces.created_at as date_creation','categorie_evenement_droit_acces.updated_at as date_modification')
             ->join('categorie_evenement_droit_acces', 'categorie_evenement_droit_acces.user_id', '=', 'users.id')
             ->join('categorie_evenements', 'categorie_evenements.id', '=', 'categorie_evenement_droit_acces.categorie_id')
+            ->where('categorie_evenement_droit_acces.user_id',$user->id)
             ->get();
         
-        
+        $data['user'] = $user;
+
         return view('administration.categorie_droit_acces.index', $data);
     }
 
@@ -51,11 +49,10 @@ class Droit_accesController extends Controller
      */
     public function article_create(User $user)
     {
-        // Evenement
         $categorie_droit_acces = Categorie::select('categories.*','categorie_droit_acces.*')
-                                ->join('categorie_droit_acces','categorie_droit_acces.categorie_id','categories.id')
-                                ->where('categorie_droit_acces.user_id',$user->id)
-                                ->get();
+                ->join('categorie_droit_acces','categorie_droit_acces.categorie_id','categories.id')
+                ->where('categorie_droit_acces.user_id',$user->id)
+                ->get();
         $T_categories = array();
         for($i=0;$i < $categorie_droit_acces->count(); $i++){
             $T_categories[] = $categorie_droit_acces[$i]->categorie_id;
@@ -70,8 +67,18 @@ class Droit_accesController extends Controller
     }
 
     public function evenement_create(User $user)
-    {
-        $data['evenement_categories'] = Categorie_evenement::all();
+    {   
+        $categorie_droit_acces = Categorie_evenement::select('categorie_evenements.*','categorie_evenement_droit_acces.*')
+                ->join('categorie_evenement_droit_acces','categorie_evenement_droit_acces.categorie_id','categorie_evenements.id')
+                ->where('categorie_evenement_droit_acces.user_id',$user->id)
+                ->get();
+        
+        $T_categories = array();
+        for($i=0;$i < $categorie_droit_acces->count(); $i++){
+            $T_categories[] = $categorie_droit_acces[$i]->categorie_id;
+        }
+
+        $data['evenement_categories'] = Categorie_evenement::whereNotIn('id',$T_categories)->get();
 
         $data['user'] = $user;
         return view('administration.categorie_droit_acces.evenement_create',$data);
